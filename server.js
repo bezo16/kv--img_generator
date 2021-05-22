@@ -2,6 +2,11 @@ const { static } = require('express')
 const express = require('express')
 const fs = require('fs')
 const app = express()
+const multer = require('multer')
+
+const storage = multer.diskStorage({
+  destination: './public/upload',
+})
 
 app.use(express.json())
 app.use(express.static('public'))
