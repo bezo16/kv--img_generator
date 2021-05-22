@@ -1,0 +1,219 @@
+@font-face {
+    font-family: 'Aver';
+    src: url('./fonts/AverBoldItalic-01yG.ttf');
+}
+
+@font-face {
+    font-family: 'Sn';
+    src: url('./fonts/Susanne_Nouveau.ttf');
+}
+
+@font-face {
+    font-family: 'Bebas';
+    src: url('./fonts/BebasNeue-Regular.otf');
+}
+
+
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    height : 100vh;
+    display: flex;
+    background-color: #d9e4f5;
+    background-image: linear-gradient(315deg, #d9e4f5 0%, #f5e3e6 74%);
+}
+
+button {
+    background: none;
+    border: none;
+    transition: 0.35s;
+    width: 100px;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0px 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.upper__editor button:hover {
+    background: rgba(0, 0, 0,0.1);
+}
+
+.select__image {
+    width: 600px;
+}
+
+.select__image__chooser {
+    width: 100%;
+    padding: 10px;
+    height: 100%;
+    direction: rtl;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.select__image__chooser img{
+    display: block;
+    margin: 10px auto;
+    width: 95%;
+    height: 180px;
+    object-fit: cover;
+    cursor: pointer;
+    filter: brightness(80%)
+}
+
+
+
+.select__image__images {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    display: none;
+}
+
+.selImg {
+    flex: 180px 0 0;
+}
+
+.select__image__chooser img:hover {
+    filter: brightness(110%);
+}
+
+.editor {
+    flex-grow: 1;
+}
+
+.upper__editor__upper {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.upper__editor__down {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.down__editor {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+canvas {
+    background: black;
+    letter-spacing: 1px;
+}
+
+canvas[value] {
+    letter-spacing: 1px;
+}
+
+.down__editor i {
+    position: absolute;
+    z-index: 10;
+    color: rgb(0, 0, 0);
+    font-size: 1.5rem;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 6px;
+    border-radius: 50%;
+    transition: 0.3s;
+    cursor: pointer;
+    opacity: 0;
+    
+}
+
+
+.canvas__div:hover  i {
+    opacity: 1;
+} 
+
+.down__editor i:active {
+    color: white;
+    transition: 0.1s;
+}
+
+.canvas__div {
+    height: 600px;
+    width: 600px;
+    position: relative;
+}
+
+
+
+
+
+#downloadBtn {
+    background: red;
+    border-radius: 10px;
+}
+
+#downloadBtn:hover {
+    color: greenyellow;
+}
+
+
+#upbtn {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#downbtn {
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#leftbtn {
+    bottom: 50%;
+    transform: translateY(50%);
+}
+
+#rightbtn {
+    right: 0%;
+    bottom: 50%;
+    transform: translateY(50%);
+}
+
+#brightnessDown {
+    font-size: 1.5rem;
+    color: grey;
+}
+
+#brightnessUp {
+    font-size: 2rem;
+}
+
+select {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+}
+
+.select__image__cattegories {
+    display: flex;
+    justify-content: end;
+}
+
+.select__image__cattegories button:hover {
+    background: rgba(0, 0, 0,0.1);
+}
+
+.select__image__cattegories button{
+    width: 70px;
+    margin: 0;
+}
+
+

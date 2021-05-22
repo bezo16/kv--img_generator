@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/7ce3f8f853.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="select__image">
+        <div class="select__image__chooser">
+            <div class="select__image__cattegories">
+                <button id="showBook"><i class="fas fa-book"></i></button>
+                <button id="showSpirit"><i class="fas fa-ghost"></i></button>
+                <button id="showNature"><i class="fas fa-tree"></i></button>
+                <button id="showSkull"><i class="fas fa-skull"></i></button>
+            </div>
+
+            <div class="select__image__images" id="select__images__nature">
+                
+            </div>
+
+            <div class="select__image__images" id="select__images__spirit">
+            </div>
+
+            <div class="select__image__images" id="select__images__book">
+            </div>
+
+            <div class="select__image__images" id="select__images__skull">
+            </div>
+
+        </div>
+    </div>
+
+    <div class="editor">
+        <div class="upper__editor">
+
+            <div class="upper__editor__upper">
+                <button id="displayBtn"><i class="fas fa-sync"></i></button>
+                <button id="downloadBtn"><i class="fas fa-download"></i></button>
+            </div>
+         
+            <div class="upper__editor__down">
+                <button id="brightnessUp"><i class="fas fa-sun"></i></button>
+                <button id="brightnessDown"><i class="fas fa-sun"></i></button>
+                <button id="lengthUp"><i class="fas fa-angle-double-up"></i></button>
+                <button id="lengthDown"><i class="fas fa-angle-double-down"></i></button>
+                <select name="" id="fontsSelect">
+                    <option value="40px Aver">Aver 40px</option>
+                    <option value="30px Aver">Aver 30px</option>
+                    <option value="45px Bebas">Bebas 45px</option>
+                    <option value="35px Bebas">Bebas 35px</option>
+                </select>
+            </div>
+            
+        </div>
+        
+        <div class="down__editor">
+            <div class="canvas__div">
+                 <i id="downbtn" class="fas fa-long-arrow-alt-down" style="padding: 6px 12px"></i>
+                 <i id="upbtn" class="fas fa-long-arrow-alt-up" style="padding: 6px 12px"></i>
+                 <i id="leftbtn" class="fas fa-long-arrow-alt-left"></i>
+                 <i id="rightbtn" class="fas fa-long-arrow-alt-right" ></i>
+                <canvas id="canvas1" width="600" height="600"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    
+    <img src="./nature/img1.jpg" id="resImage" alt="" style="display:none;">
+    <script defer src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script defer type="module" src="script.js"></script>    
+</body>
+</html>
