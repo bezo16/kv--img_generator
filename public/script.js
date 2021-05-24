@@ -4,6 +4,7 @@ import quotes from './quotes.js'
 window.onload = function() { 
 // canvas1 displayBtn resImage
 
+
 fetch('http://localhost:3000/nature')
 .then(res => res.json())
 
