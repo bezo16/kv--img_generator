@@ -49,6 +49,10 @@ button {
     width: 600px;
 }
 
+.addBtn {
+    flex: 180px 0 0;
+}
+
 .select__image__chooser {
     width: 100%;
     padding: 10px;
@@ -76,6 +80,7 @@ button {
     display: flex;
     flex-wrap: wrap;
     display: none;
+    flex-direction: row-reverse;
 }
 
 .selImg {
@@ -214,6 +219,51 @@ select {
 .select__image__cattegories button{
     width: 70px;
     margin: 0;
+}
+
+.add__div {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    z-index: 1;
+}
+
+input[type=file] {
+    display: block;
+    margin: 10px auto;
+    background: white;
+}
+
+.add__div select {
+    display: block;
+    margin: 10px auto;
+    color: white;
+}
+
+.add__div input {
+    display: block;
+    margin: 10px auto;
+    color: white;
+}
+
+.close_add_div {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    padding: 5px 10px;
+    font-size: 2rem;
+    color: red;
+    border: red 1px solid;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.close_add_div:hover {
+    border: rgb(54, 114, 224) 1px solid;
 }
 
 

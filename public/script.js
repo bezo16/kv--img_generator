@@ -4,6 +4,23 @@ import quotes from './quotes.js'
 window.onload = function() { 
 // canvas1 displayBtn resImage
 
+fetch('http://localhost:3000/nature')
+.then(res => res.json())
+
+.then(data => {
+    data.forEach((img,index) => {
+        if(index === 0) select__images__nature.innerHTML = `<img src="./nature/${img}" class="selImg" alt="">`
+        else select__images__nature.innerHTML += `<img src="./nature/${img}" class="selImg" alt="">`
+        if(index === data.length - 1) select__images__nature.innerHTML += `<img src="./addBtn.png" class="addBtn" id="addBtnNature" alt="">`
+    })
+    imagesClickEvent()
+    if(data.length === 0) select__images__nature.innerHTML += `<img src="./addBtn.png" id="addBtnNature" class="addBtn" alt="">`
+    addBtnNature.addEventListener('click', () => {
+        addDiv.style.display = 'initial'
+        selectCategory.value = 'nature'
+    })
+})
+
 select__images__nature.style.display = 'flex'
 
 let ctx = canvas1.getContext('2d')
@@ -176,8 +193,14 @@ showNature.addEventListener('click',() => {
         data.forEach((img,index) => {
             if(index === 0) select__images__nature.innerHTML = `<img src="./nature/${img}" class="selImg" alt="">`
             else select__images__nature.innerHTML += `<img src="./nature/${img}" class="selImg" alt="">`
+            if(index === data.length - 1) select__images__nature.innerHTML += `<img src="./addBtn.png" class="addBtn" id="addBtnNature" alt="">`
         })
         imagesClickEvent()
+        if(data.length === 0) select__images__nature.innerHTML += `<img src="./addBtn.png" id="addBtnNature" class="addBtn" alt="">`
+        addBtnNature.addEventListener('click', () => {
+            addDiv.style.display = 'initial'
+            selectCategory.value = 'nature'
+        })
     })
 })
 
@@ -193,8 +216,14 @@ showSpirit.addEventListener('click',() => {
         data.forEach((img,index) => {
             if(index === 0) select__images__spirit.innerHTML = `<img src="./spirit/${img}" class="selImg" alt="">`
             else select__images__spirit.innerHTML += `<img src="./spirit/${img}" class="selImg" alt="">`
+            if(index === data.length - 1) select__images__spirit.innerHTML += `<img src="./addBtn.png" id="addBtnSpirit" class="addBtn" alt="">`
         })
         imagesClickEvent()
+        if(data.length === 0) select__images__spirit.innerHTML += `<img src="./addBtn.png" id="addBtnSpirit" class="addBtn" alt="">`
+        addBtnSpirit.addEventListener('click', () => {
+            addDiv.style.display = 'initial'
+            selectCategory.value = 'spirit'
+        })
     })
     
 })
@@ -208,11 +237,18 @@ showBook.addEventListener('click',() => {
     .then(res => res.json())
     
     .then(data => {
+        console.log(data)
         data.forEach((img,index) => {
             if(index === 0) select__images__book.innerHTML = `<img src="./book/${img}" class="selImg" alt="">`
             else select__images__book.innerHTML += `<img src="./book/${img}" class="selImg" alt="">`
+            if(index === data.length - 1) select__images__book.innerHTML += `<img src="./addBtn.png" id="addBtnBook" class="addBtn" alt="">`
         })
         imagesClickEvent()
+        if(data.length === 0) select__images__book.innerHTML += `<img src="./addBtn.png" id="addBtnBook" class="addBtn" alt="">`
+        addBtnBook.addEventListener('click', () => {
+            addDiv.style.display = 'initial'
+            selectCategory.value = 'book'
+        })
     })
 })
 
@@ -228,6 +264,12 @@ showSkull.addEventListener('click',() => {
         data.forEach((img,index) => {
             if(index === 0) select__images__skull.innerHTML = `<img src="./skull/${img}" class="selImg" alt="">`
             else select__images__skull.innerHTML += `<img src="./skull/${img}" class="selImg" alt="">`
+            if(index === data.length - 1) select__images__skull.innerHTML += `<img src="./addBtn.png" id="addBtnSkull" class="addBtn" alt="">`
+        })
+        if(data.length === 0) select__images__skull.innerHTML += `<img src="./addBtn.png" id="addBtnSkull" class="addBtn" alt="">`
+        addBtnSkull.addEventListener('click', () => {
+            addDiv.style.display = 'initial'
+            selectCategory.value = 'skull'
         })
         imagesClickEvent()
     })
@@ -252,4 +294,9 @@ fontsSelect.addEventListener('input', (e) => {
     writeImage(10)
 })
 }
+
+closeAddDiv.addEventListener('click',() => {
+    addDiv.style.display = 'none'
+})
+
 

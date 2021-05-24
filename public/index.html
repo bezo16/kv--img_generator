@@ -9,6 +9,19 @@
     <script src="https://kit.fontawesome.com/7ce3f8f853.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div class="add__div" id="addDiv">
+        <div class="close_add_div" id="closeAddDiv">X</div>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <select name="category" id="selectCategory">
+                <option value="skull">skull</option>
+                <option value="nature">nature</option>
+                <option value="spirit">spirit</option>
+                <option value="book">book</option>
+            </select>
+            <input type="file" name="photo" />
+            <input type="submit" value="add photo">
+          </form>
+    </div>
     <div class="select__image">
         <div class="select__image__chooser">
             <div class="select__image__cattegories">
@@ -19,10 +32,6 @@
             </div>
 
             <div class="select__image__images" id="select__images__nature">
-                <form action="/upload" method="POST">
-                    <input type="file" name="myImg">
-                    <button>submit</button>
-                </form>
                 
             </div>
 
