@@ -284,7 +284,7 @@ downloadBtn.addEventListener('click',() => {
         
         document.body.appendChild(a)
         a.href = canvas1.toDataURL()
-        a.download = "obrasog"
+        a.download = "quote"
         a.click()
         document.body.removeChild(a)
     }
