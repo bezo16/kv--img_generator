@@ -5,7 +5,7 @@ window.onload = function() {
 // canvas1 displayBtn resImage
 
 
-fetch('http://localhost:3000/nature')
+fetch('/nature')
 .then(res => res.json())
 
 .then(data => {
@@ -187,7 +187,7 @@ showNature.addEventListener('click',() => {
     select__images__spirit.style.display = 'none'
     select__images__book.style.display = 'none'
     select__images__skull.style.display = 'none'
-    fetch('http://localhost:3000/nature')
+    fetch('/nature')
     .then(res => res.json())
     
     .then(data => {
@@ -210,7 +210,7 @@ showSpirit.addEventListener('click',() => {
     select__images__spirit.style.display = 'flex'
     select__images__book.style.display = 'none'
     select__images__skull.style.display = 'none'
-    fetch('http://localhost:3000/spirit')
+    fetch('/spirit')
     .then(res => res.json())
     
     .then(data => {
@@ -234,7 +234,7 @@ showBook.addEventListener('click',() => {
     select__images__spirit.style.display = 'none'
     select__images__book.style.display = 'flex'
     select__images__skull.style.display = 'none'
-    fetch('http://localhost:3000/book')
+    fetch('/book')
     .then(res => res.json())
     
     .then(data => {
@@ -258,7 +258,7 @@ showSkull.addEventListener('click',() => {
     select__images__spirit.style.display = 'none'
     select__images__book.style.display = 'none'
     select__images__skull.style.display = 'flex'
-    fetch('http://localhost:3000/skull')
+    fetch('/skull')
     .then(res => res.json())
     
     .then(data => {
