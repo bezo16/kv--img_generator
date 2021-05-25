@@ -44,21 +44,21 @@ app.get('/' , (req,res) => {
 })
 
 app.get('/nature', (req,res) => {
-    fs.readdir(__dirname + '/public/nature', (err, files) => {
-        res.json(files)
-      });
+    Nature.find({},(err,items) => {
+      res.json(items)
+    })
 })
 
 app.get('/spirit', (req,res) => {
-    fs.readdir(__dirname + '/public/spirit', (err, files) => {
-        res.json(files)
-      });
+     Spirit.find({},(err,items) => {
+       res.json(items)
+     })
 })
 
 app.get('/book', (req,res) => {
-    fs.readdir(__dirname + '/public/book', (err, files) => {
-        res.json(files)
-      });
+    Book.find({},(err,items) => {
+      res.json(items)
+    })
 })
 
 app.get('/skull', (req,res) => {
