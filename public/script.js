@@ -8,19 +8,19 @@ fetch('/skull')
 
 .then(data => {
     data.forEach((img,index) => {
-        if(index === 0) select__images__nature.innerHTML = `<img src="data:image/png;base64, ${img.image}" class="selImg" alt="">`
-        else select__images__nature.innerHTML += `<img src="data:image/png;base64, ${img.image}" class="selImg" alt="">`
-        if(index === data.length - 1) select__images__nature.innerHTML += `<img src="./addBtn.png" class="addBtn" id="addBtnNature" alt="">`
+        if(index === 0) select__images__skull.innerHTML = `<div class="selImg"><img src="data:image/png;base64, ${img.image}" alt=""><button class="remove__button">X</button></div>`
+        else select__images__skull.innerHTML += `<div class="selImg"><img src="data:image/png;base64, ${img.image}" alt=""><button class="remove__button">X</button></div>`
+        if(index === data.length - 1) select__images__skull.innerHTML += `<div class="selImg"><img src="./addBtn.png" id="addBtnSkull" class="addBtn" alt=""></div>`
     })
     imagesClickEvent()
-    if(data.length === 0) select__images__nature.innerHTML = `<img src="./addBtn.png" id="addBtnNature" class="addBtn" alt="">`
-    addBtnNature.addEventListener('click', () => {
+    if(data.length === 0) select__images__skull.innerHTML = `<div class="selImg"><img src="./addBtn.png" id="addBtnSkull" class="addBtn" alt=""></div>`
+    addBtnSkull.addEventListener('click', () => {
         addDiv.style.display = 'initial'
-        selectCategory.value = 'nature'
+        selectCategory.value = 'skull'
     })
 })
 
-select__images__nature.style.display = 'flex'
+select__images__skull.style.display = 'flex'
 
 let ctx = canvas1.getContext('2d')
 let randomNum = 0
@@ -48,6 +48,11 @@ selectedQuote = quotes[randomNum]
 
 function selectFont(fontText) {
     font = fontText 
+}
+
+function removeImage(e) {
+    e.stopPropagation()
+    console.log('test')
 }
 
 function imagesClickEvent() {
@@ -261,12 +266,12 @@ showSkull.addEventListener('click',() => {
     
     .then(data => {
         data.forEach((img,index) => {
-            if(index === 0) select__images__skull.innerHTML = `<img src="data:image/png;base64, ${img.image}" class="selImg" alt="">`
-            else select__images__skull.innerHTML += `<img src="data:image/png;base64, ${img.image}" class="selImg" alt="">`
-            if(index === data.length - 1) select__images__skull.innerHTML += `<img src="./addBtn.png" id="addBtnSkull" class="addBtn" alt="">`
+            if(index === 0) select__images__skull.innerHTML = `<div class="selImg"><img src="data:image/png;base64, ${img.image}" alt=""><button onclick="removeImage()" class="remove__button">X</button></div>`
+            else select__images__skull.innerHTML += `<div class="selImg"><img src="data:image/png;base64, ${img.image}" alt=""><button onclick="removeImage()" class="remove__button">X</button></div>`
+            if(index === data.length - 1) select__images__skull.innerHTML += `<div class="selImg"><img src="./addBtn.png" id="addBtnSkull" class="addBtn" alt=""></div>`
         })
         imagesClickEvent()
-        if(data.length === 0) select__images__skull.innerHTML = `<img src="./addBtn.png" id="addBtnSkull" class="addBtn" alt="">`
+        if(data.length === 0) select__images__skull.innerHTML = `<div class="selImg"><img src="./addBtn.png" id="addBtnSkull" class="addBtn" alt=""></div>`
         addBtnSkull.addEventListener('click', () => {
             addDiv.style.display = 'initial'
             selectCategory.value = 'skull'
