@@ -289,3 +289,7 @@ input[type=file] {
 .selImg:hover .remove__button {
     display: initial;
 }
+
+.active {
+    background:rgba(0, 0, 0,0.1)
+}

@@ -94,6 +94,27 @@ app.post('/upload', upload.single('photo'), (req,res) => {
   res.redirect('/')
 })
 
+app.post('/delete',(req,res) => {
+  
+  if(req.body.category === 'skull') {
+      Skull.findByIdAndDelete(req.body.idImg, () => {
+      res.redirect('/')
+    })}
+  if(req.body.category === 'nature') {
+      Nature.findByIdAndDelete(req.body.idImg, () => {
+      res.redirect('/')
+    })}
+  if(req.body.category === 'spirit') {
+      Spirit.findByIdAndDelete(req.body.idImg, () => {
+      res.redirect('/')
+    })}
+  if(req.body.category === 'book') {
+      Book.findByIdAndDelete(req.body.idImg, () => {
+      res.redirect('/')
+    })}
+
+})
+
 
 
 app.listen(process.env.PORT || 3000)
