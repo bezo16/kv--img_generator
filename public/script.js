@@ -1,5 +1,3 @@
-
-
 import quotes from './quotes.js'
 window.onload = function() { 
 // canvas1 displayBtn resImage
@@ -263,11 +261,11 @@ showSkull.addEventListener('click',() => {
     
     .then(data => {
         data.forEach((img,index) => {
-            if(index === 0) select__images__skull.innerHTML = `<img src="./skull/${img}" class="selImg" alt="">`
-            else select__images__skull.innerHTML += `<img src="./skull/${img}" class="selImg" alt="">`
+            if(index === 0) select__images__skull.innerHTML = `<img src="data:image/png;base64, ${img.image}" class="selImg" alt="">`
+            else select__images__skull.innerHTML += `<img src="data:image/png;base64, ${img.image}" class="selImg" alt="">`
             if(index === data.length - 1) select__images__skull.innerHTML += `<img src="./addBtn.png" id="addBtnSkull" class="addBtn" alt="">`
         })
-        if(data.length === 0) select__images__skull.innerHTML += `<img src="./addBtn.png" id="addBtnSkull" class="addBtn" alt="">`
+        if(data.length === 0) select__images__skull.innerHTML += `<img src="data:image/png;base64, ${img.image}" id="addBtnSkull" class="addBtn" alt="">`
         addBtnSkull.addEventListener('click', () => {
             addDiv.style.display = 'initial'
             selectCategory.value = 'skull'
@@ -299,5 +297,3 @@ fontsSelect.addEventListener('input', (e) => {
 closeAddDiv.addEventListener('click',() => {
     addDiv.style.display = 'none'
 })
-
-
