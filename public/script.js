@@ -195,12 +195,12 @@ showNature.addEventListener('click',() => {
     
     .then(data => {
         data.forEach((img,index) => {
-            if(index === 0) select__images__nature.innerHTML = `<img src="data:image/png;base64, ${img.image}" class="selImg" alt="">`
-            else select__images__nature.innerHTML += `<img src="data:image/png;base64, ${img.image}" class="selImg" alt="">`
-            if(index === data.length - 1) select__images__nature.innerHTML += `<img src="./addBtn.png" class="addBtn" id="addBtnNature" alt="">`
+            if(index === 0) select__images__nature.innerHTML = `<div class="selImg"><img src="data:image/png;base64, ${img.image}" alt=""><button onclick="removeImage()" class="remove__button">X</button></div>`
+            else select__images__nature.innerHTML += `<div class="selImg"><img src="data:image/png;base64, ${img.image}" alt=""><button onclick="removeImage()" class="remove__button">X</button></div>`
+            if(index === data.length - 1) select__images__nature.innerHTML += `<div class="selImg"><img src="./addBtn.png" id="addBtnNature" class="addBtn" alt=""></div>`
         })
         imagesClickEvent()
-        if(data.length === 0) select__images__nature.innerHTML = `<img src="./addBtn.png" id="addBtnNature" class="addBtn" alt="">`
+        if(data.length === 0) select__images__nature.innerHTML = `<div class="selImg"><img src="./addBtn.png" id="addBtnNature" class="addBtn" alt=""></div>`
         addBtnNature.addEventListener('click', () => {
             addDiv.style.display = 'initial'
             selectCategory.value = 'nature'
@@ -218,12 +218,12 @@ showSpirit.addEventListener('click',() => {
     
     .then(data => {
         data.forEach((img,index) => {
-            if(index === 0) select__images__spirit.innerHTML = `<img src="data:image/png;base64, ${img.image}" class="selImg" alt="">`
-            else select__images__spirit.innerHTML += `<img src="data:image/png;base64, ${img.image}" class="selImg" alt="">`
-            if(index === data.length - 1) select__images__spirit.innerHTML += `<img src="./addBtn.png" id="addBtnSpirit" class="addBtn" alt="">`
+            if(index === 0) select__images__spirit.innerHTML = `<div class="selImg"><img src="data:image/png;base64, ${img.image}" alt=""><button onclick="removeImage()" class="remove__button">X</button></div>`
+            else select__images__spirit.innerHTML += `<div class="selImg"><img src="data:image/png;base64, ${img.image}" alt=""><button onclick="removeImage()" class="remove__button">X</button></div>`
+            if(index === data.length - 1) select__images__spirit.innerHTML += `<div class="selImg"><img src="./addBtn.png" id="addBtnSpirit" class="addBtn" alt=""></div>`
         })
         imagesClickEvent()
-        if(data.length === 0) select__images__spirit.innerHTML = `<img src="./addBtn.png" id="addBtnSpirit" class="addBtn" alt="">`
+        if(data.length === 0) select__images__spirit.innerHTML = `<div class="selImg"><img src="./addBtn.png" id="addBtnSpirit" class="addBtn" alt=""></div>`
         addBtnSpirit.addEventListener('click', () => {
             addDiv.style.display = 'initial'
             selectCategory.value = 'spirit'
@@ -243,12 +243,12 @@ showBook.addEventListener('click',() => {
     .then(data => {
         console.log(data)
         data.forEach((img,index) => {
-            if(index === 0) select__images__book.innerHTML = `<img src="data:image/png;base64, ${img.image}" class="selImg" alt="">`
-            else select__images__book.innerHTML += `<img src="data:image/png;base64, ${img.image}" class="selImg" alt="">`
-            if(index === data.length - 1) select__images__book.innerHTML += `<img src="./addBtn.png" id="addBtnBook" class="addBtn" alt="">`
+            if(index === 0) select__images__book.innerHTML = `<div class="selImg"><img src="data:image/png;base64, ${img.image}" alt=""><button onclick="removeImage()" class="remove__button">X</button></div>`
+            else select__images__book.innerHTML += `<div class="selImg"><img src="data:image/png;base64, ${img.image}" alt=""><button onclick="removeImage()" class="remove__button">X</button></div>`
+            if(index === data.length - 1) select__images__book.innerHTML += `<div class="selImg"><img src="./addBtn.png" id="addBtnBook" class="addBtn" alt=""></div>`
         })
         imagesClickEvent()
-        if(data.length === 0) select__images__book.innerHTML = `<img src="./addBtn.png" id="addBtnBook" class="addBtn" alt="">`
+        if(data.length === 0) select__images__book.innerHTML = `<div class="selImg"><img src="./addBtn.png" id="addBtnBook" class="addBtn" alt=""></div>`
         addBtnBook.addEventListener('click', () => {
             addDiv.style.display = 'initial'
             selectCategory.value = 'book'
