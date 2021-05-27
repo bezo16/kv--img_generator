@@ -84,7 +84,7 @@ button {
 }
 
 .select__image__chooser img:hover {
-    border: 5px green solid;
+    border: 5px rgb(34, 245, 6) solid;
 }
 
 .editor {
