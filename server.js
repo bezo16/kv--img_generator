@@ -14,6 +14,7 @@ const Nature = require('./schemas/nature')
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use(express.static('public'))
+app.use(cspHeader)
 
 dbURL = 'mongodb+srv://bezo16:pokec5555@cluster0.kskxj.mongodb.net/kvimg?retryWrites=true&w=majority'
 mongoose.connect(dbURL,{useNewUrlParser:true,useUnifiedTopology:true},(err) => {
@@ -39,7 +40,7 @@ let upload = multer({ storage: storage })
 
 
 app.get('/' , (req,res) => {
-    res.sendFile(__dirname + '/index.html')
+  res.set("Content-Security-Policy", "script-src '*'").sendFile(__dirname + '/index.html')
 })
 
 app.get('/nature', (req,res) => {
@@ -62,7 +63,7 @@ app.get('/book', (req,res) => {
 
 app.get('/skull', (req,res) => {
     Skull.find({},(err,items) => {
-      res.set("Content-Security-Policy", "script-src '*").json(items)
+      res.json(items)
     })
 })
 
@@ -80,6 +81,7 @@ app.post('/upload', upload.single('photo'), (req,res) => {
 
             fs.unlink(__dirname + '/uploads/' + files[0],(err) => {
               if(err) console.log(err)
+              res.set("Content-Security-Policy", "script-src '*'").redirect('/')
             })  
           })
        if(err) console.log('dačo na piču')
@@ -90,7 +92,6 @@ app.post('/upload', upload.single('photo'), (req,res) => {
           res.send(error) // Logs an error if there was one
         })
 
-  res.redirect('/')
 })
 
 app.post('/delete',(req,res) => {
@@ -114,7 +115,14 @@ app.post('/delete',(req,res) => {
 
 })
 
+app.get('/test',(req,res) => {
+  res.send('test')
+})
 
+function cspHeader(req,res,next) {
+  res.setHeader("Content-Security-Policy", "default-src *")
+  next()
+}
 
 app.listen(process.env.PORT || 3000)
 
