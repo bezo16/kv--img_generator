@@ -120,7 +120,7 @@ app.get('/test',(req,res) => {
 })
 
 function cspHeader(req,res,next) {
-  res.setHeader("Content-Security-Policy", "default-src *")
+  res.setHeader("Content-Security-Policy", "* data: blob: filesystem: about: ws: wss: 'unsafe-inline' 'unsafe-eval' 'unsafe-dynamic'")
   next()
 }
 
