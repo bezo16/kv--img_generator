@@ -15,24 +15,10 @@ app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use(express.static('public'))
 
-const { expressCspHeader, INLINE, NONE, SELF } = require('express-csp-header');
-
-app.use(expressCspHeader({
-    directives: {
-        'default-src': [SELF],
-        'script-src': [SELF, INLINE, 'somehost.com'],
-        'style-src': [SELF, 'mystyles.net'],
-        'img-src': ['data:', 'images.com'],
-        'worker-src': [NONE],
-        'block-all-mixed-content': true
-    }
-}));
-
 dbURL = 'mongodb+srv://bezo16:pokec5555@cluster0.kskxj.mongodb.net/kvimg?retryWrites=true&w=majority'
 mongoose.connect(dbURL,{useNewUrlParser:true,useUnifiedTopology:true},(err) => {
   if(!err) console.log('pripojeny do db')
 })
-
 
 
 let storage = multer.diskStorage({
@@ -64,7 +50,7 @@ app.get('/nature', (req,res) => {
 
 app.get('/spirit', (req,res) => {
      Spirit.find({},(err,items) => {
-       res.json(items)
+      res.set("Content-Security-Policy", "script-src '*'").json(items)
      })
 })
 
@@ -76,7 +62,7 @@ app.get('/book', (req,res) => {
 
 app.get('/skull', (req,res) => {
     Skull.find({},(err,items) => {
-      res.json(items)
+      res.set("Content-Security-Policy", "script-src '*").json(items)
     })
 })
 
