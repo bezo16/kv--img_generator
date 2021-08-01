@@ -37,7 +37,9 @@ button {
 }
 
 .select__image {
-    width: 600px;
+    width: 1150px;
+    background-color: #d2e3fc;
+    background-image: linear-gradient(315deg, #d9e4f5 0%, #f7d9de 74%);
 }
 
 #addBtnSkull,#addBtnBook,#addBtnNature,#addBtnSpirit {
@@ -67,7 +69,7 @@ button {
 
 
 .select__image__images {
-    width: 100%;
+    width: 1000px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row-reverse;
@@ -147,8 +149,8 @@ canvas[value] {
 }
 
 .canvas__div {
-    height: 600px;
-    width: 600px;
+    height: 700px;
+    width: 700px;
     position: relative;
 }
 

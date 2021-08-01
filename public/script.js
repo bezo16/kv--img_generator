@@ -248,7 +248,6 @@ showBook.addEventListener('click',() => {
     .then(res => res.json())
     
     .then(data => {
-        console.log(data)
         data.forEach((img,index) => {
             if(index === 0) select__images__book.innerHTML = `<div class="selImg"><img src="data:image/png;base64, ${img.image}" alt=""><button id="${img._id}" class="remove__button">X</button></div>`
             else select__images__book.innerHTML += `<div class="selImg"><img src="data:image/png;base64, ${img.image}" alt=""><button id="${img._id}" class="remove__button">X</button></div>`
