@@ -1,8 +1,8 @@
-
+/* 
 @font-face {
     font-family: 'Bebas';
     src: url('./fonts/BebasNeue-Regular.otf');
-}
+} */
 
 
 
@@ -86,7 +86,8 @@ button {
 }
 
 .select__image__chooser img:hover {
-    border: 5px rgb(34, 245, 6) solid;
+    border: 3px rgb(34, 245, 6) solid;
+    filter: brightness(150%);
 }
 
 .editor {
@@ -294,4 +295,101 @@ input[type=file] {
 
 .active {
     background:rgba(0, 0, 0,0.1)
+}
+
+#chooseQuoteBtn {
+    width: min-content;
+    font-size: 2rem;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+#chooseQuoteBtn:hover {
+    transition: 0s;
+    background: rgba(0, 0, 0, 0.61);
+    padding: 10px;
+    color: rgb(255, 255, 2);
+}
+
+#chooseQuoteDiv {
+    position: fixed;
+    display: none;
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 200000000000;
+}
+
+.choose__books {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+.choose__books h1 {
+    cursor: pointer;
+    padding: 20px;
+    border-radius: 20px;
+    color: white;
+    background: rgba(255, 255, 255, 0.55);
+    
+}
+
+.choose__books h1:hover {
+    transition: 0.25s;
+    color: gold;
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.choose__books__quotes {
+    height: 85vh;
+    color: white;
+    overflow: auto;
+    padding: 120px;
+}
+
+.bg__chapters {
+    display: none;
+    flex-wrap: wrap;
+}
+
+.bg__chapters h1 {
+    width: 300px;
+    border-radius: 10px;
+    margin: 30px;
+    padding: 30px;
+    border: solid white 2px;
+}
+
+.bg__quotes {
+    display: none;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.chapter__select:hover {
+    cursor: pointer;
+    transition: 0.25s;
+    color: gold;
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.quote {
+    cursor: pointer;
+    padding: 3px;
+    margin: 15px;
+    font-size: 1.5rem;
+}
+
+.quote:hover {
+    color: rgb(209, 209, 209);
+}
+
+.verse {
+    color: yellow;
 }

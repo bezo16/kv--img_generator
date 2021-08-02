@@ -1,4 +1,5 @@
 import quotes from './quotes.js'
+import bg from './bg.js'
 window.onload = function() { 
 // canvas1 displayBtn resImage
 
@@ -18,11 +19,17 @@ let textBrightness = 'brightness(120%)'
 let spaceY = 45
 let textLengthCon = 18
 
+let chapterNum
+let QuoteNum
+let bookChoose 
+
+let allText = ''
+
 let images
 
 ctx.shadowColor="black";
 
-let font = '45px Bebas'
+let font = '45px Gabriola'
 
 randomNum = Math.floor(Math.random() * 34059 )
 selectedQuote = quotes[randomNum]
@@ -63,11 +70,11 @@ function writeImage(mod) {
     if(mod === 1)  ctx.filter = "brightness(90%)"
     if(mod === 2)  ctx.filter = "brightness(110%)"
     ctx.drawImage(resImage,0,0)
+    ctx.drawImage(logo,315,615,70,50)
     let dataURL = canvas1.toDataURL('image/jpeg')
 
     let lineText = ''
     let textLength = 0
-    let allText = selectedQuote.quote.split(' ')
 
 
     lineTextY = textY
@@ -76,11 +83,21 @@ function writeImage(mod) {
 
     allText.forEach((item,index) => {
         textLength += item.length
+
+        let newItem = ''
+        item.split('').forEach(letter => {
+            if(letter === 'ṇ') newItem += 'n'
+            else if(letter === 'Ṛ') newItem += 'R'
+            else if(letter === 'ṛ') newItem += 'r'
+            else if(letter === 'ṭ') newItem += 't'
+            else if(letter === 'ḍ') newItem += 'd'
+            else newItem += letter
+        })
         
         if(textLength > textLengthCon ) {
-            lineText += `${item} `
-            if(font === '45px Bebas') lineTextY += spaceY + 6
-            else lineTextY += spaceY
+            lineText += `${newItem} `
+            lineTextY +=  Number(font.split(' ')[0].slice(0,2)) * 1.3
+            console.log(font)
             textLength = 0
             ctx.shadowBlur = shadowBlur;
             ctx.lineWidth = lineWidth;
@@ -92,9 +109,8 @@ function writeImage(mod) {
             lineText = ''
 
         } else if (index === allText.length - 1) {
-                lineText += `${item} `
-                if(font === '45px Bebas') lineTextY += spaceY + 6
-                else lineTextY += spaceY
+                lineText += `${newItem} `
+                lineTextY +=  Number(font.split(' ')[0].slice(0,2)) * 1.3
                 ctx.shadowBlur = shadowBlur;
                 ctx.lineWidth = lineWidth;
                 //  ctx.strokeText(lineText,textX,lineTextY)   
@@ -106,19 +122,39 @@ function writeImage(mod) {
            
         }
          else {
-            lineText += `${item} `
+            lineText += `${newItem}. `
         }
         
     })
-    ctx.font = '22' + font.slice(2)
+
+    ctx.font="30px Gabriola";
+    lineTextY +=  Number(font.split(' ')[0].slice(0,2)) * 2.25
     ctx.shadowBlur = shadowBlur;
     ctx.lineWidth = lineWidth;
-    let measureLength = ctx.measureText(selectedQuote.author)
+    //  ctx.strokeText(lineText,textX,lineTextY)   
+    ctx.filter = textBrightness
+    ctx.shadowBlur = 0;
+    ctx.fillStyle = "white";
+    let quoteText = `${bookChoose} ${chapterNum +1}.${QuoteNum}`
+    let quoteWidth = ctx.measureText(quoteText).width
+    ctx.fillText(quoteText,((350) - quoteWidth/2),lineTextY)
+
+
+    // ctx.font = '22' + font.slice(2)
+    // ctx.shadowBlur = shadowBlur;
+    // ctx.lineWidth = lineWidth;
+    // let measureLength = ctx.measureText(selectedQuote.author)
     //  ctx.strokeText(selectedQuote.author, 300 - measureLength.width / 2 ,570)  
-    ctx.filter = textBrightness 
-    ctx.shadowBlur=0;
-    ctx.fillStyle="white";
-    ctx.fillText(selectedQuote.author,300 - measureLength.width / 2 ,580)
+    // ctx.filter = textBrightness 
+    // ctx.shadowBlur=0;
+    // ctx.fillStyle="white";
+    // ctx.fillText(selectedQuote.author,300 - measureLength.width / 2 ,580)
+
+    ctx.font="26px Gabriola";
+    ctx.fillStyle = "white";
+    let reinText = `@reinkarnacia.sk`
+    let textWidth = ctx.measureText(reinText)
+    ctx.fillText(reinText,((350) - (textWidth.width / 2)),700 - 15 );
     
     ctx.filter = 'brightness(100%)'
     resImage.src = dataURL
@@ -166,13 +202,13 @@ rightbtn.addEventListener('click',() => {
 })
 
 lengthUp.addEventListener('click',() => {
-    textLengthCon += 2
+    textLengthCon += 1
     writeImage(0)
    
 })
 
 lengthDown.addEventListener('click',() => {
-    textLengthCon -= 2
+    textLengthCon -= 1
     writeImage(0)
    
 })
@@ -263,6 +299,8 @@ showBook.addEventListener('click',() => {
     })
 })
 
+
+
 showSkull.addEventListener('click',() => {
     select__images__nature.style.display = 'none'
     select__images__spirit.style.display = 'none'
@@ -290,6 +328,7 @@ showSkull.addEventListener('click',() => {
         })
     })
 })
+showSkull.click()
 
 downloadBtn.addEventListener('click',() => {
     if(window.navigator.msSaveBlob) {
@@ -309,8 +348,87 @@ fontsSelect.addEventListener('input', (e) => {
     selectFont(e.target.value)
     writeImage(10)
 })
-}
 
 closeAddDiv.addEventListener('click',() => {
     addDiv.style.display = 'none'
 })
+
+
+chooseQuoteBtn.addEventListener('click',() => {
+    chooseQuoteDiv.style.display = 'initial'
+})
+
+
+let booksSelectors = document.querySelectorAll('.book__choose')
+booksSelectors.forEach(book => {
+    book.addEventListener('click',(e) => {
+        let book = e.target.dataset.book
+        
+        if(book === 'bg') {
+            bg__chapters.style.display = 'flex'
+            bg__quotes.style.display = 'none'
+            bg__chapters.innerHTML = ``
+            bg.forEach((chapter,index) => {
+                bg__chapters.innerHTML += `<h1 class="chapter__select bg__chapter__select">Chapter ${index+1}</h1>`
+            })
+            let bgSelectors = document.querySelectorAll('.bg__chapter__select')
+            bgSelectors.forEach((chapter,index) => {
+                chapter.addEventListener('click',(e) => {
+                    console.log('choosin chapter')
+                    bg__quotes.innerHTML = ``
+                    bg__chapters.style.display = 'none'
+                    bg__quotes.style.display = 'flex'
+                    chapterNum = e.target.textContent.split(' ')[1] -1
+                    bookChoose = 'bhagavad-gíta'
+                    let quotes = bg[chapterNum]
+                    quotes.forEach((quote,index) => {
+                        bg__quotes.innerHTML += `<div class="quote">${quote.text}<span class="verse">VERS.${index+1}</span></div>`
+                    })
+                    let allQuotes = document.querySelectorAll('.quote')
+                    allQuotes.forEach(quote => {
+                        quote.addEventListener('click',(e) => {
+                            chooseQuoteDiv.style.display = 'none'
+                            allText = e.target.textContent
+                            QuoteNum = allText.split('.')
+                            QuoteNum = QuoteNum[QuoteNum.length - 1]
+
+                            allText = allText.slice(0,allText.indexOf('VERS'))
+                            allText = allText.split(' ') 
+                            writeImage(0)
+                        })
+                    })
+                })
+            })
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        if(book === 'sb') {
+        }
+        if(book === 'cc') {
+        }
+    })
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

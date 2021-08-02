@@ -1,83 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="./favicon.png" type="image/x-icon">
-    <script src="https://kit.fontawesome.com/7ce3f8f853.js" crossorigin="anonymous"></script>
-</head>
-<body>
-    <div class="add__div" id="addDiv">
-        <div class="close_add_div" id="closeAddDiv">X</div>
-        <form action="/upload" method="post" enctype="multipart/form-data">
-            <select name="category" id="selectCategory">
-                <option value="skull">skull</option>
-                <option value="nature">nature</option>
-                <option value="spirit">spirit</option>
-                <option value="book">book</option>
-            </select>
-            <input type="file" name="photo" />
-            <input type="submit" value="add photo">
-          </form>
-    </div>
-    <div class="select__image">
-        <div class="select__image__chooser">
-            <div class="select__image__cattegories">
-                <button id="showBook"><i class="fas fa-book"></i></button>
-                <button id="showSpirit"><i class="fas fa-ghost"></i></button>
-                <button id="showNature"><i class="fas fa-tree"></i></button>
-                <button id="showSkull"><i class="fas fa-skull"></i></button>
-            </div>
-
-            <div class="select__image__images" id="select__images__nature"></div>
-
-            <div class="select__image__images" id="select__images__spirit"></div>
-
-            <div class="select__image__images" id="select__images__book"></div>
-
-            <div class="select__image__images" id="select__images__skull"></div>
-
-        </div>
-    </div>
-
-    <div class="editor">
-        <div class="upper__editor">
-
-            <div class="upper__editor__upper">
-                <button id="displayBtn"><i class="fas fa-sync"></i></button>
-                <button id="downloadBtn"><i class="fas fa-download"></i></button>
-            </div>
-         
-            <div class="upper__editor__down">
-                <button id="brightnessUp"><i class="fas fa-sun"></i></button>
-                <button id="brightnessDown"><i class="fas fa-sun"></i></button>
-                <button id="lengthUp"><i class="fas fa-angle-double-up"></i></button>
-                <button id="lengthDown"><i class="fas fa-angle-double-down"></i></button>
-                <select name="" id="fontsSelect">
-                    <option value="45px Bebas">Bebas 45px</option>
-                    <option value="35px Bebas">Bebas 35px</option>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="shortcut icon" href="./favicon.png" type="image/x-icon">
+        <script src="https://kit.fontawesome.com/7ce3f8f853.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="add__div" id="addDiv">
+            <div class="close_add_div" id="closeAddDiv">X</div>
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <select name="category" id="selectCategory">
+                    <option value="skull">skull</option>
+                    <option value="nature">nature</option>
+                    <option value="spirit">spirit</option>
+                    <option value="book">book</option>
                 </select>
+                <input type="file" name="photo" />
+                <input type="submit" value="add photo">
+            </form>
+        </div>
+        <div class="select__image">
+            <div class="select__image__chooser">
+                <div class="select__image__cattegories">
+                    <button id="showBook"><i class="fas fa-book"></i></button>
+                    <button id="showSpirit"><i class="fas fa-ghost"></i></button>
+                    <button id="showNature"><i class="fas fa-tree"></i></button>
+                    <button id="showSkull"><i class="fas fa-skull"></i></button>
+                </div>
+                
+                <div class="select__image__images" id="select__images__nature"></div>
+                
+                <div class="select__image__images" id="select__images__spirit"></div>
+                
+                <div class="select__image__images" id="select__images__book"></div>
+                
+                <div class="select__image__images" id="select__images__skull"></div>
+                
             </div>
-            
         </div>
         
-        <div class="down__editor">
-            <div class="canvas__div">
-                 <i id="downbtn" class="fas fa-long-arrow-alt-down" style="padding: 6px 12px"></i>
-                 <i id="upbtn" class="fas fa-long-arrow-alt-up" style="padding: 6px 12px"></i>
-                 <i id="leftbtn" class="fas fa-long-arrow-alt-left"></i>
-                 <i id="rightbtn" class="fas fa-long-arrow-alt-right" ></i>
-                <canvas id="canvas1" width="700" height="700"></canvas>
+        <div class="editor">
+            <div class="upper__editor">
+                
+                <div class="upper__editor__upper">
+                    <button id="displayBtn"><i class="fas fa-sync"></i></button>
+                    <button id="downloadBtn"><i class="fas fa-download"></i></button>
+                </div>
+                
+                <div class="upper__editor__down">
+                    <button id="brightnessUp"><i class="fas fa-sun"></i></button>
+                    <button id="brightnessDown"><i class="fas fa-sun"></i></button>
+                    <button id="lengthUp"><i class="fas fa-angle-double-up"></i></button>
+                    <button id="lengthDown"><i class="fas fa-angle-double-down"></i></button>
+                    <select name="" id="fontsSelect">
+                        <option value="55px Gabriola">Gabriola 55px</option>
+                        <option value="50px Gabriola">Gabriola 50px</option>
+                        <option selected value="45px Gabriola">Gabriola 45px</option>
+                        <option value="40px Gabriola">Gabriola 40px</option>
+                        <option value="35px Gabriola">Gabriola 35px</option>
+                        <option value="30px Gabriola">Gabriola 30px</option>
+                        <option value="25px Gabriola">Gabriola 25px</option>
+                        <option value="20px Gabriola">Gabriola 20px</option>
+                    </select>
+                </div>
+                
             </div>
+            
+            <div class="down__editor">
+                <div class="canvas__div">
+                    <i id="downbtn" class="fas fa-long-arrow-alt-down" style="padding: 6px 12px"></i>
+                    <i id="upbtn" class="fas fa-long-arrow-alt-up" style="padding: 6px 12px"></i>
+                    <i id="leftbtn" class="fas fa-long-arrow-alt-left"></i>
+                    <i id="rightbtn" class="fas fa-long-arrow-alt-right" ></i>
+                    <canvas id="canvas1" width="700" height="700"></canvas>
+                </div>
+            </div>
+            <button id="chooseQuoteBtn">choose quote</button>
         </div>
-    </div>
-    
-    
-    <img src="" id="resImage" alt="" style="display:none;">
-    <script defer src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
-    <script defer type="module" src="script.js"></script>    
-</body>
-</html>
+        
+        
+        <div id="chooseQuoteDiv">
+
+            <div class="choose__books">
+                <h1 class="book__choose" data-book="bg">bhagavad gita</h1>
+                <h1 class="book__choose" data-book="sb">srimad bhagavatam</h1>
+                <h1 class="book__choose" data-book="cc">CC caitanya</h1>
+            </div>
+
+            <div class="choose__books__quotes">
+
+                <div class="bg__chapters" id="bg__chapters"></div>
+                <div class="bg__quotes" id="bg__quotes"></div>
+
+            </div>
+
+        </div>
+
+            
+        <script  type="module" src="script.js"></script>    
+        <img src="" id="resImage" alt="" style="display:none;">
+        <img src="./logo.png" id="logo" alt="" style="display:none;width: 70px;height: 50px;">
+        <script defer src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    </body>
+    </html>
