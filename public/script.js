@@ -128,7 +128,8 @@ function writeImage(mod) {
     })
 
     ctx.font="30px Gabriola";
-    lineTextY +=  Number(font.split(' ')[0].slice(0,2)) * 2.25
+    let quoteAddY = Number(font.split(' ')[0].slice(0,2)) * 1.55
+    lineTextY +=  quoteAddY <= 35 ? 35 : quoteAddY
     ctx.shadowBlur = shadowBlur;
     ctx.lineWidth = lineWidth;
     //  ctx.strokeText(lineText,textX,lineTextY)   
