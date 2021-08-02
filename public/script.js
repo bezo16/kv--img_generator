@@ -8,8 +8,8 @@ select__images__skull.style.display = 'flex'
 
 let ctx = canvas1.getContext('2d')
 let randomNum = 0
-let textX = 40
-let textY = 200
+let textX = 80
+let textY = 20
 let lineTextY = 20
 let lineTextX = 20
 let selectedQuote 
@@ -382,7 +382,7 @@ booksSelectors.forEach(book => {
                     bookChoose = 'bhagavad-gíta'
                     let quotes = bg[chapterNum]
                     quotes.forEach((quote,index) => {
-                        bg__quotes.innerHTML += `<div class="quote">${quote.text}<span class="verse">VERS.${index+1}</span></div>`
+                        bg__quotes.innerHTML += `<div class="quote">${quote.text} <span class="verse"> VERS.${index+1}</span></div>`
                     })
                     let allQuotes = document.querySelectorAll('.quote')
                     allQuotes.forEach(quote => {
