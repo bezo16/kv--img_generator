@@ -122,7 +122,7 @@ function writeImage(mod) {
            
         }
          else {
-            lineText += `${newItem}. `
+            lineText += `${newItem} `
         }
         
     })
