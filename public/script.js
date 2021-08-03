@@ -17,6 +17,7 @@ let shadowBlur = 0
 let lineWidth = 0
 let textBrightness = 'brightness(120%)'
 let spaceY = 45
+let quoteY = 600
 let textLengthCon = 18
 
 let chapterNum
@@ -53,6 +54,10 @@ function removeClickEvent () {
 
 function selectFont(fontText) {
     font = fontText 
+}
+
+function setStyles(length) {
+    console.log('dlžka je : ' + length)
 }
 
 function imagesClickEvent() {
@@ -101,7 +106,9 @@ function writeImage(mod) {
             textLength = 0
             ctx.shadowBlur = shadowBlur;
             ctx.lineWidth = lineWidth;
-            //  ctx.strokeText(lineText,textX,lineTextY)
+            ctx.shadowBlur=8;
+            ctx.lineWidth=3;
+             ctx.strokeText(lineText,textX,lineTextY)
             ctx.filter = textBrightness   
             ctx.shadowBlur= 0 ;
             ctx.fillStyle="white";
@@ -113,7 +120,9 @@ function writeImage(mod) {
                 lineTextY +=  Number(font.split(' ')[0].slice(0,2)) * 1.3
                 ctx.shadowBlur = shadowBlur;
                 ctx.lineWidth = lineWidth;
-                //  ctx.strokeText(lineText,textX,lineTextY)   
+                ctx.shadowBlur=8;
+                ctx.lineWidth=3;
+                 ctx.strokeText(lineText,textX,lineTextY)   
                 ctx.filter = textBrightness
                 ctx.shadowBlur = 0;
                 ctx.fillStyle = "white";
@@ -132,13 +141,15 @@ function writeImage(mod) {
     lineTextY +=  quoteAddY <= 35 ? 35 : quoteAddY
     ctx.shadowBlur = shadowBlur;
     ctx.lineWidth = lineWidth;
-    //  ctx.strokeText(lineText,textX,lineTextY)   
+    ctx.shadowBlur=8;
+    ctx.lineWidth=3;
+     ctx.strokeText(lineText,textX,lineTextY)   
     ctx.filter = textBrightness
     ctx.shadowBlur = 0;
     ctx.fillStyle = "white";
     let quoteText = `${bookChoose} ${chapterNum +1}.${QuoteNum}`
     let quoteWidth = ctx.measureText(quoteText).width
-    ctx.fillText(quoteText,((350) - quoteWidth/2),lineTextY)
+    ctx.fillText(quoteText,((350) - quoteWidth/2),quoteY)
 
 
     // ctx.font = '22' + font.slice(2)
@@ -396,6 +407,7 @@ booksSelectors.forEach(book => {
                             allText = allText.slice(0,allText.indexOf('VERS'))
                             allText = allText.split(' ') 
                             writeImage(0)
+                            setStyles(20)
                         })
                     })
                 })
@@ -418,7 +430,11 @@ booksSelectors.forEach(book => {
 })
 
 
-
+canvas1.addEventListener('click',(e) => {
+    quoteY = e.clientY - 138
+    console.log(quoteY)
+    writeImage(0)
+})
 
 
 

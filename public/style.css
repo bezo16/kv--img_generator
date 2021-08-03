@@ -86,8 +86,7 @@ button {
 }
 
 .select__image__chooser img:hover {
-    border: 3px rgb(34, 245, 6) solid;
-    filter: brightness(150%);
+    filter: brightness(300%);
 }
 
 .editor {
