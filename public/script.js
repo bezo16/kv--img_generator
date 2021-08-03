@@ -8,8 +8,8 @@ select__images__skull.style.display = 'flex'
 
 let ctx = canvas1.getContext('2d')
 let randomNum = 0
-let textX = 80
-let textY = 20
+let textX = 120
+let textY = 120
 let lineTextY = 20
 let lineTextX = 20
 let selectedQuote 
@@ -88,9 +88,11 @@ function writeImage(mod) {
 
     allText.forEach((item,index) => {
         textLength += item.length
+        let textWidth
 
         let newItem = ''
         item.split('').forEach(letter => {
+        
             if(letter === 'ṇ') newItem += 'n'
             else if(letter === 'Ṛ') newItem += 'R'
             else if(letter === 'ṛ') newItem += 'r'
@@ -108,11 +110,12 @@ function writeImage(mod) {
             ctx.lineWidth = lineWidth;
             ctx.shadowBlur=8;
             ctx.lineWidth=3;
-             ctx.strokeText(lineText,textX,lineTextY)
+            textWidth = ctx.measureText(lineText).width
+            ctx.strokeText(lineText,((350) - textWidth / 2),lineTextY)
             ctx.filter = textBrightness   
             ctx.shadowBlur= 0 ;
             ctx.fillStyle="white";
-            ctx.fillText(lineText,textX,lineTextY)
+            ctx.fillText(lineText,((350) - textWidth / 2),lineTextY)
             lineText = ''
 
         } else if (index === allText.length - 1) {
@@ -122,11 +125,12 @@ function writeImage(mod) {
                 ctx.lineWidth = lineWidth;
                 ctx.shadowBlur=8;
                 ctx.lineWidth=3;
-                 ctx.strokeText(lineText,textX,lineTextY)   
+                textWidth = ctx.measureText(lineText).width
+                 ctx.strokeText(lineText,((350) - textWidth / 2),lineTextY)   
                 ctx.filter = textBrightness
                 ctx.shadowBlur = 0;
                 ctx.fillStyle = "white";
-                ctx.fillText(lineText,textX,lineTextY)
+                ctx.fillText(lineText,((350) - textWidth / 2),lineTextY)
                 lineText = ''
            
         }
@@ -165,8 +169,8 @@ function writeImage(mod) {
     ctx.font="26px Gabriola";
     ctx.fillStyle = "white";
     let reinText = `@reinkarnacia.sk`
-    let textWidth = ctx.measureText(reinText)
-    ctx.fillText(reinText,((350) - (textWidth.width / 2)),700 - 15 );
+    let textWidthRein = ctx.measureText(reinText)
+    ctx.fillText(reinText,((350) - (textWidthRein.width / 2)),700 - 15 );
     
     ctx.filter = 'brightness(100%)'
     resImage.src = dataURL
@@ -375,6 +379,9 @@ let booksSelectors = document.querySelectorAll('.book__choose')
 booksSelectors.forEach(book => {
     book.addEventListener('click',(e) => {
         let book = e.target.dataset.book
+
+
+        ////////////////////////// BG BG BG BG BG  BG BG BG BG BG  BG BG BG BG BG  BG BG BG BG BG 
         
         if(book === 'bg') {
             bg__chapters.style.display = 'flex'
@@ -404,6 +411,17 @@ booksSelectors.forEach(book => {
                             QuoteNum = allText.split('.')
                             QuoteNum = QuoteNum[QuoteNum.length - 1]
 
+                            let allTextLength = allText.length
+                            console.log(allTextLength)
+
+                            //          101 - 150
+                            if(allTextLength > 100 && allTextLength <=150) {
+                                console.log('101 - 150')
+                                textY = 150
+                                textLengthCon = 23
+                            }
+
+
                             allText = allText.slice(0,allText.indexOf('VERS'))
                             allText = allText.split(' ') 
                             writeImage(0)
@@ -413,6 +431,8 @@ booksSelectors.forEach(book => {
                 })
             })
         }
+
+          ////////////////////////// BG BG BG BG BG  BG BG BG BG BG  BG BG BG BG BG  BG BG BG BG BG  BG BG BG BG BG 
         
         
         

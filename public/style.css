@@ -63,7 +63,7 @@ button {
     height: 180px;
     object-fit: cover;
     cursor: pointer;
-    filter: brightness(80%)
+    filter: brightness(180%)
 }
 
 
