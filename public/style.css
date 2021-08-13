@@ -319,7 +319,7 @@ input[type=file] {
     left: 0px;
     height: 100vh;
     width: 100%;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.965);
     z-index: 200000000000;
 }
 

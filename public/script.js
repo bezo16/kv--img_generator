@@ -16,7 +16,6 @@ let selectedQuote
 let shadowBlur = 0
 let lineWidth = 0
 let textBrightness = 'brightness(120%)'
-let spaceY = 45
 let quoteY = 600
 let textLengthCon = 18
 
@@ -25,6 +24,7 @@ let QuoteNum
 let bookChoose 
 
 let allText = ''
+
 
 let images
 
@@ -53,12 +53,93 @@ function removeClickEvent () {
 }
 
 function selectFont(fontText) {
-    font = fontText 
+    ctx.font = fontText 
 }
 
-function setStyles(length) {
-    console.log('dlžka je : ' + length)
+function selectStyles(textLength) {
+    console.log(textLength)
+    console.log('select styles func')
+
+     // DEFAULT 0 - 100
+     selectFont("60px Gabriola");
+
+
+     // 101 - 200
+     if(textLength > 100 && textLength <= 150 ) {
+
+         selectFont("54px Gabriola");
+         textY = 100
+         textLengthCon = 18
+     }
+
+     // 151 - 200
+     if(textLength > 150 && textLength <= 200 ) {
+
+         selectFont("51px Gabriola");
+         textY = 70
+         textLengthCon = 20
+     }
+
+     // 201 - 250
+     if(textLength > 200 && textLength <= 250 ) {
+
+         selectFont("45px Gabriola");
+         textY = 85
+         textLengthCon = 25
+     }
+
+     // 251 - 300
+     if(textLength > 250 && textLength <= 300 ) {
+
+         selectFont("42px Gabriola");
+         textY = 65
+         textLengthCon = 27
+     }
+
+     // 301 - 351
+     if(textLength > 300 && textLength <= 350 ) {
+
+         selectFont("39px Gabriola");
+         textY = 55
+         textLengthCon = 30
+     }
+
+     // 351 - 400
+     if(textLength > 351 && textLength <= 400 ) {
+
+        selectFont("36px Gabriola");
+        textY = 55
+        textLengthCon = 32
+    }
+
+     // 401 - 450
+     if(textLength > 400 && textLength <= 450 ) {
+
+         selectFont("33px Gabriola");
+         textY = 50
+         textLengthCon = 36
+     }
+
+     // 451 - 500
+     if(textLength > 450 && textLength <= 500 ) {
+
+        selectFont("30px Gabriola");
+        textY = 50
+        textLengthCon = 40
+    }
+
+     // 501 - 600
+     if(textLength > 500 && textLength <= 600 ) {
+
+         selectFont("21px Gabriola");
+         textY = 110
+         textLengthCon = 50
+     }
+
+
 }
+
+
 
 function imagesClickEvent() {
     images = document.querySelectorAll('.selImg')
@@ -71,7 +152,8 @@ function imagesClickEvent() {
 }
 
 function writeImage(mod) {
-    ctx.font = font;
+    let font = ctx.font
+    console.log(font)
     if(mod === 1)  ctx.filter = "brightness(90%)"
     if(mod === 2)  ctx.filter = "brightness(110%)"
     ctx.drawImage(resImage,0,0)
@@ -103,8 +185,7 @@ function writeImage(mod) {
         
         if(textLength > textLengthCon ) {
             lineText += `${newItem} `
-            lineTextY +=  Number(font.split(' ')[0].slice(0,2)) * 1.3
-            console.log(font)
+            lineTextY +=  Number(ctx.font.split(' ')[0].slice(0,2)) * 1.35
             textLength = 0
             ctx.shadowBlur = shadowBlur;
             ctx.lineWidth = lineWidth;
@@ -120,7 +201,7 @@ function writeImage(mod) {
 
         } else if (index === allText.length - 1) {
                 lineText += `${newItem} `
-                lineTextY +=  Number(font.split(' ')[0].slice(0,2)) * 1.3
+                lineTextY +=  Number(ctx.font.split(' ')[0].slice(0,2)) * 1.35
                 ctx.shadowBlur = shadowBlur;
                 ctx.lineWidth = lineWidth;
                 ctx.shadowBlur=8;
@@ -140,9 +221,9 @@ function writeImage(mod) {
         
     })
 
-    ctx.font="30px Gabriola";
-    let quoteAddY = Number(font.split(' ')[0].slice(0,2)) * 1.55
-    lineTextY +=  quoteAddY <= 35 ? 35 : quoteAddY
+    selectFont("30px Gabriola");
+    // let quoteAddY = Number(font.split(' ')[0].slice(0,2)) * 1.55
+    // lineTextY +=  quoteAddY <= 35 ? 35 : quoteAddY
     ctx.shadowBlur = shadowBlur;
     ctx.lineWidth = lineWidth;
     ctx.shadowBlur=8;
@@ -166,13 +247,18 @@ function writeImage(mod) {
     // ctx.fillStyle="white";
     // ctx.fillText(selectedQuote.author,300 - measureLength.width / 2 ,580)
 
-    ctx.font="26px Gabriola";
-    ctx.fillStyle = "white";
+    selectFont("26px Gabriola");
     let reinText = `@reinkarnacia.sk`
     let textWidthRein = ctx.measureText(reinText)
+    ctx.shadowBlur=8;
+    ctx.lineWidth=3;
+    ctx.strokeText(reinText,((350) - (textWidthRein.width / 2)),700 - 15)
+    ctx.fillStyle = "white";
+    ctx.shadowBlur=0;
     ctx.fillText(reinText,((350) - (textWidthRein.width / 2)),700 - 15 );
     
     ctx.filter = 'brightness(100%)'
+    ctx.font = font
     resImage.src = dataURL
 }
 
@@ -200,22 +286,23 @@ downbtn.addEventListener('click',() => {
 })
 
 upbtn.addEventListener('click',() => {
+    console.log('up ' + ctx.font)
     textY -= 10
     writeImage(0)
    
 })
 
-leftbtn.addEventListener('click',() => {
-    textX -= 10
-    writeImage(0)
+// leftbtn.addEventListener('click',() => {
+//     textX -= 10
+//     writeImage(0)
    
-})
+// })
 
-rightbtn.addEventListener('click',() => {
-    textX += 10
-    writeImage(0)
+// rightbtn.addEventListener('click',() => {
+//     textX += 10
+//     writeImage(0)
    
-})
+// })
 
 lengthUp.addEventListener('click',() => {
     textLengthCon += 1
@@ -398,7 +485,7 @@ booksSelectors.forEach(book => {
                     bg__chapters.style.display = 'none'
                     bg__quotes.style.display = 'flex'
                     chapterNum = e.target.textContent.split(' ')[1] -1
-                    bookChoose = 'bhagavad-gíta'
+                    bookChoose = 'Bhagavad-Gíta'
                     let quotes = bg[chapterNum]
                     quotes.forEach((quote,index) => {
                         bg__quotes.innerHTML += `<div class="quote">${quote.text} <span class="verse"> VERS.${index+1}</span></div>`
@@ -414,18 +501,13 @@ booksSelectors.forEach(book => {
                             let allTextLength = allText.length
                             console.log(allTextLength)
 
-                            //          101 - 150
-                            if(allTextLength > 100 && allTextLength <=150) {
-                                console.log('101 - 150')
-                                textY = 150
-                                textLengthCon = 23
-                            }
+                            selectStyles(allText.length)
+
 
 
                             allText = allText.slice(0,allText.indexOf('VERS'))
                             allText = allText.split(' ') 
                             writeImage(0)
-                            setStyles(20)
                         })
                     })
                 })
@@ -469,3 +551,15 @@ canvas1.addEventListener('click',(e) => {
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
