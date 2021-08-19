@@ -226,14 +226,14 @@ function writeImage(mod) {
     // lineTextY +=  quoteAddY <= 35 ? 35 : quoteAddY
     ctx.shadowBlur = shadowBlur;
     ctx.lineWidth = lineWidth;
-    ctx.shadowBlur=8;
+    let quoteText = `${bookChoose} ${chapterNum +1}.${QuoteNum}`
+    let quoteWidth = ctx.measureText(quoteText).width
+    ctx.shadowBlur=7;
     ctx.lineWidth=3;
-     ctx.strokeText(lineText,textX,lineTextY)   
+     ctx.strokeText(quoteText,((350) - quoteWidth/2),quoteY)   
     ctx.filter = textBrightness
     ctx.shadowBlur = 0;
     ctx.fillStyle = "white";
-    let quoteText = `${bookChoose} ${chapterNum +1}.${QuoteNum}`
-    let quoteWidth = ctx.measureText(quoteText).width
     ctx.fillText(quoteText,((350) - quoteWidth/2),quoteY)
 
 
@@ -537,8 +537,6 @@ canvas1.addEventListener('click',(e) => {
     console.log(quoteY)
     writeImage(0)
 })
-
-
 
 
 
