@@ -7,6 +7,8 @@ window.onload = function() {
 select__images__skull.style.display = 'flex'
 
 let ctx = canvas1.getContext('2d')
+ctx.imageSmoothingEnabled = false;
+
 let randomNum = 0
 let textX = 120
 let textY = 120
