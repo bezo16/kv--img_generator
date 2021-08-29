@@ -7,7 +7,7 @@ window.onload = function() {
 select__images__skull.style.display = 'flex'
 
 let ctx = canvas1.getContext('2d')
-ctx.imageSmoothingEnabled = false;
+ctx.imageSmoothingEnabled = false; 
 
 let randomNum = 0
 let textX = 120
@@ -154,11 +154,15 @@ function imagesClickEvent() {
 }
 
 function writeImage(mod) {
+    test.textContent = ctx.imageSmoothingEnabled
     let font = ctx.font
     console.log(font)
     if(mod === 1)  ctx.filter = "brightness(90%)"
     if(mod === 2)  ctx.filter = "brightness(110%)"
     ctx.drawImage(resImage,0,0)
+
+    let logo = new Image()
+    logo.src = './logo.svg'
     ctx.drawImage(logo,315,615,70,50)
     let dataURL = canvas1.toDataURL('image/jpeg')
 

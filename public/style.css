@@ -392,3 +392,10 @@ input[type=file] {
 .verse {
     color: yellow;
 }
+
+#test {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    font-size: 2rem;
+}
