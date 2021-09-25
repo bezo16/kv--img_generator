@@ -1,5 +1,6 @@
 import quotes from './quotes.js'
 import bg from './bg.js'
+import sb from './sb.js' 
 window.onload = function() { 
 // canvas1 displayBtn resImage
 
@@ -351,92 +352,92 @@ showNature.addEventListener('click',() => {
     })
 })
 
-showSpirit.addEventListener('click',() => {
-    select__images__nature.style.display = 'none'
-    select__images__spirit.style.display = 'flex'
-    select__images__book.style.display = 'none'
-    select__images__skull.style.display = 'none'
-    showNature.classList.remove('active')
-    showSpirit.classList.add('active')
-    showBook.classList.remove('active')
-    showSkull.classList.remove('active')
-    fetch('/spirit')
-    .then(res => res.json())
+// showSpirit.addEventListener('click',() => {
+//     select__images__nature.style.display = 'none'
+//     select__images__spirit.style.display = 'flex'
+//     select__images__book.style.display = 'none'
+//     select__images__skull.style.display = 'none'
+//     showNature.classList.remove('active')
+//     showSpirit.classList.add('active')
+//     showBook.classList.remove('active')
+//     showSkull.classList.remove('active')
+//     fetch('/spirit')
+//     .then(res => res.json())
     
-    .then(data => {
-        data.forEach((img,index) => {
-            if(index === 0) select__images__spirit.innerHTML = `<div class="selImg"><img src="data:image/png;base64, ${img.image}" alt=""><button id="${img._id}" class="remove__button">X</button></div>`
-            else select__images__spirit.innerHTML += `<div class="selImg"><img src="data:image/png;base64, ${img.image}" alt=""><button id="${img._id}" class="remove__button">X</button></div>`
-            if(index === data.length - 1) select__images__spirit.innerHTML += `<div class="selImg"><img src="./addBtn.png" id="addBtnSpirit" class="addBtn" alt=""></div>`
-        })
-        imagesClickEvent() 
-        removeClickEvent()
-        if(data.length === 0) select__images__spirit.innerHTML = `<div class="selImg"><img src="./addBtn.png" id="addBtnSpirit" class="addBtn" alt=""></div>`
-        addBtnSpirit.addEventListener('click', () => {
-            addDiv.style.display = 'initial'
-            selectCategory.value = 'spirit'
-        })
-    })
+//     .then(data => {
+//         data.forEach((img,index) => {
+//             if(index === 0) select__images__spirit.innerHTML = `<div class="selImg"><img src="data:image/png;base64, ${img.image}" alt=""><button id="${img._id}" class="remove__button">X</button></div>`
+//             else select__images__spirit.innerHTML += `<div class="selImg"><img src="data:image/png;base64, ${img.image}" alt=""><button id="${img._id}" class="remove__button">X</button></div>`
+//             if(index === data.length - 1) select__images__spirit.innerHTML += `<div class="selImg"><img src="./addBtn.png" id="addBtnSpirit" class="addBtn" alt=""></div>`
+//         })
+//         imagesClickEvent() 
+//         removeClickEvent()
+//         if(data.length === 0) select__images__spirit.innerHTML = `<div class="selImg"><img src="./addBtn.png" id="addBtnSpirit" class="addBtn" alt=""></div>`
+//         addBtnSpirit.addEventListener('click', () => {
+//             addDiv.style.display = 'initial'
+//             selectCategory.value = 'spirit'
+//         })
+//     })
     
-})
+// })
 
-showBook.addEventListener('click',() => {
-    select__images__nature.style.display = 'none'
-    select__images__spirit.style.display = 'none'
-    select__images__book.style.display = 'flex'
-    select__images__skull.style.display = 'none'
-    showNature.classList.remove('active')
-    showSpirit.classList.remove('active')
-    showBook.classList.add('active')
-    showSkull.classList.remove('active')
-    fetch('/book')
-    .then(res => res.json())
+// showBook.addEventListener('click',() => {
+//     select__images__nature.style.display = 'none'
+//     select__images__spirit.style.display = 'none'
+//     select__images__book.style.display = 'flex'
+//     select__images__skull.style.display = 'none'
+//     showNature.classList.remove('active')
+//     showSpirit.classList.remove('active')
+//     showBook.classList.add('active')
+//     showSkull.classList.remove('active')
+//     fetch('/book')
+//     .then(res => res.json())
     
-    .then(data => {
-        data.forEach((img,index) => {
-            if(index === 0) select__images__book.innerHTML = `<div class="selImg"><img src="data:image/png;base64, ${img.image}" alt=""><button id="${img._id}" class="remove__button">X</button></div>`
-            else select__images__book.innerHTML += `<div class="selImg"><img src="data:image/png;base64, ${img.image}" alt=""><button id="${img._id}" class="remove__button">X</button></div>`
-            if(index === data.length - 1) select__images__book.innerHTML += `<div class="selImg"><img src="./addBtn.png" id="addBtnBook" class="addBtn" alt=""></div>`
-        })
-        imagesClickEvent()
-        removeClickEvent()
-        if(data.length === 0) select__images__book.innerHTML = `<div class="selImg"><img src="./addBtn.png" id="addBtnBook" class="addBtn" alt=""></div>`
-        addBtnBook.addEventListener('click', () => {
-            addDiv.style.display = 'initial'
-            selectCategory.value = 'book'
-        })
-    })
-})
+//     .then(data => {
+//         data.forEach((img,index) => {
+//             if(index === 0) select__images__book.innerHTML = `<div class="selImg"><img src="data:image/png;base64, ${img.image}" alt=""><button id="${img._id}" class="remove__button">X</button></div>`
+//             else select__images__book.innerHTML += `<div class="selImg"><img src="data:image/png;base64, ${img.image}" alt=""><button id="${img._id}" class="remove__button">X</button></div>`
+//             if(index === data.length - 1) select__images__book.innerHTML += `<div class="selImg"><img src="./addBtn.png" id="addBtnBook" class="addBtn" alt=""></div>`
+//         })
+//         imagesClickEvent()
+//         removeClickEvent()
+//         if(data.length === 0) select__images__book.innerHTML = `<div class="selImg"><img src="./addBtn.png" id="addBtnBook" class="addBtn" alt=""></div>`
+//         addBtnBook.addEventListener('click', () => {
+//             addDiv.style.display = 'initial'
+//             selectCategory.value = 'book'
+//         })
+//     })
+// })
 
 
 
-showSkull.addEventListener('click',() => {
-    select__images__nature.style.display = 'none'
-    select__images__spirit.style.display = 'none'
-    select__images__book.style.display = 'none'
-    select__images__skull.style.display = 'flex'
-    showNature.classList.remove('active')
-    showSpirit.classList.remove('active')
-    showBook.classList.remove('active')
-    showSkull.classList.add('active')
-    fetch('/skull')
-    .then(res => res.json())
+// showSkull.addEventListener('click',() => {
+//     select__images__nature.style.display = 'none'
+//     select__images__spirit.style.display = 'none'
+//     select__images__book.style.display = 'none'
+//     select__images__skull.style.display = 'flex'
+//     showNature.classList.remove('active')
+//     showSpirit.classList.remove('active')
+//     showBook.classList.remove('active')
+//     showSkull.classList.add('active')
+//     fetch('/skull')
+//     .then(res => res.json())
     
-    .then(data => {
-        data.forEach((img,index) => {
-            if(index === 0) select__images__skull.innerHTML = `<div class="selImg"><img src="data:image/png;base64, ${img.image}" alt=""><button id="${img._id}" class="remove__button">X</button></div>`
-            else select__images__skull.innerHTML += `<div class="selImg"><img src="data:image/png;base64, ${img.image}" alt=""><button id="${img._id}" class="remove__button">X</button></div>`
-            if(index === data.length - 1) select__images__skull.innerHTML += `<div class="selImg"><img src="./addBtn.png" id="addBtnSkull" class="addBtn" alt=""></div>`
-        })
-        imagesClickEvent()
-        removeClickEvent()
-        if(data.length === 0) select__images__skull.innerHTML = `<div class="selImg"><img src="./addBtn.png" id="addBtnSkull" class="addBtn" alt=""></div>`
-        addBtnSkull.addEventListener('click', () => {
-            addDiv.style.display = 'initial'
-            selectCategory.value = 'skull'
-        })
-    })
-})
+//     .then(data => {
+//         data.forEach((img,index) => {
+//             if(index === 0) select__images__skull.innerHTML = `<div class="selImg"><img src="data:image/png;base64, ${img.image}" alt=""><button id="${img._id}" class="remove__button">X</button></div>`
+//             else select__images__skull.innerHTML += `<div class="selImg"><img src="data:image/png;base64, ${img.image}" alt=""><button id="${img._id}" class="remove__button">X</button></div>`
+//             if(index === data.length - 1) select__images__skull.innerHTML += `<div class="selImg"><img src="./addBtn.png" id="addBtnSkull" class="addBtn" alt=""></div>`
+//         })
+//         imagesClickEvent()
+//         removeClickEvent()
+//         if(data.length === 0) select__images__skull.innerHTML = `<div class="selImg"><img src="./addBtn.png" id="addBtnSkull" class="addBtn" alt=""></div>`
+//         addBtnSkull.addEventListener('click', () => {
+//             addDiv.style.display = 'initial'
+//             selectCategory.value = 'skull'
+//         })
+//     })
+// })
 showSkull.click()
 
 downloadBtn.addEventListener('click',() => {
@@ -472,6 +473,7 @@ let booksSelectors = document.querySelectorAll('.book__choose')
 booksSelectors.forEach(book => {
     book.addEventListener('click',(e) => {
         let book = e.target.dataset.book
+        console.log(book)
 
 
         ////////////////////////// BG BG BG BG BG  BG BG BG BG BG  BG BG BG BG BG  BG BG BG BG BG 
@@ -525,14 +527,36 @@ booksSelectors.forEach(book => {
         
         
         
-        
+        ////////////////////////// SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB  
         
         
         
         
         if(book === 'sb') {
+            bg__chapters.style.display = 'none'
+            bg__quotes.style.display = 'none'
+            sb__quotes.innerHTML = ``
+            console.log(sb.length)
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ////////////////////////// SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB  
         if(book === 'cc') {
+            bg__chapters.style.display = 'none'
+            bg__quotes.style.display = 'none'
         }
     })
 })
