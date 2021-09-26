@@ -63,7 +63,7 @@ button {
     height: 180px;
     object-fit: cover;
     cursor: pointer;
-    filter: brightness(180%)
+    filter: brightness(220%)
 }
 
 
@@ -365,17 +365,13 @@ input[type=file] {
     border: solid white 2px;
 }
 
-.bg__quotes {
+.quotes {
     display: none;
     flex-direction: column;
     overflow: auto;
 }
 
-.sb__quotes {
-    display: none;
-    flex-direction: column;
-    overflow: auto;
-}
+
 
 .sb__canto {
     display: none;
@@ -436,11 +432,4 @@ input[type=file] {
 
 .verse {
     color: yellow;
-}
-
-#test {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    font-size: 2rem;
 }

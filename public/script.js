@@ -1,11 +1,17 @@
 import quotes from './quotes.js'
 import bg from './bg.js'
 import sb from './sb.js' 
+import tempPr from './pr.js' 
+
+let pr = []
 window.onload = function() { 
 // canvas1 displayBtn resImage
+for(let i=0; i < tempPr.length + 100; i+=100) {
+    pr.push(tempPr.slice(i,i + 100))
+    console.log(pr)
+}
 
-
-let testing = 0
+let testing = 1
 
 
 select__images__skull.style.display = 'flex'
@@ -159,7 +165,6 @@ function imagesClickEvent() {
 }
 
 function writeImage(mod) {
-    test.textContent = ctx.imageSmoothingEnabled
     let font = ctx.font
     console.log(font)
     if(mod === 1)  ctx.filter = "brightness(90%)"
@@ -517,6 +522,8 @@ if(!testing) {
                             let allTextLength = allText.length
                             console.log(allTextLength)
 
+                            quoteText = `Bhagavad-gītā ${chapterNum +1 }.${QuoteNum}`
+
                             selectStyles(allText.length)
 
                             allText = allText.slice(0,allText.indexOf('VERS'))
@@ -599,22 +606,31 @@ if(!testing) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
         ////////////////////////// SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB  
+
+
+
+        ////////////////////////// CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC
         if(book === 'cc') {
             resetAll()
         }
+        ////////////////////////// CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC
+
+
+
+        
+        ///////////////////////////// POREKADLA POREKADLA POREKADLA POREKADLA POREKADLA POREKADLA POREKADLA 
+        if(book === 'pr') {
+            console.log('juchuuuu')
+            pr__chapters.innerHTML = ``
+            resetAll()
+            pr.forEach((chapter,index) => {
+                pr__chapters.innerHTML += `<h1 class="canto__select pr__canto__select">Sekcia ${index+1}</h1>` 
+
+            })
+        }
+        ///////////////////////////// POREKADLA POREKADLA POREKADLA POREKADLA POREKADLA POREKADLA POREKADLA 
+        // if(index < 100)pr__chapters.innerHTML += `<h1 class="chapters__select sb__canto__select">${chapter.quote}</h1>` 
     })
 })
 
