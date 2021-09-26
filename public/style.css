@@ -352,17 +352,9 @@ input[type=file] {
     padding: 120px;
 }
 
-.bg__chapters {
+.chapters {
     display: none;
     flex-wrap: wrap;
-}
-
-.bg__chapters h1 {
-    width: 300px;
-    border-radius: 10px;
-    margin: 30px;
-    padding: 30px;
-    border: solid white 2px;
 }
 
 .quotes {
@@ -372,13 +364,7 @@ input[type=file] {
 }
 
 
-
-.sb__canto {
-    display: none;
-    flex-wrap: wrap;
-}
-
-.sb__canto h1 {
+.canto h1 {
     width: 300px;
     border-radius: 10px;
     margin: 30px;
@@ -386,12 +372,8 @@ input[type=file] {
     border: solid white 2px;
 }
 
-.sb__chapters {
-    display: none;
-    flex-wrap: wrap;
-}
 
-.sb__chapters h1 {
+.chapters h1 {
     width: 300px;
     border-radius: 10px;
     margin: 30px;

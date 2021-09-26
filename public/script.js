@@ -621,11 +621,12 @@ if(!testing) {
         
         ///////////////////////////// POREKADLA POREKADLA POREKADLA POREKADLA POREKADLA POREKADLA POREKADLA 
         if(book === 'pr') {
-            console.log('juchuuuu')
-            pr__chapters.innerHTML = ``
             resetAll()
+            pr__chapters.innerHTML = ``
+            pr__chapters.style.display = 'flex'
+            console.log(pr.length)
             pr.forEach((chapter,index) => {
-                pr__chapters.innerHTML += `<h1 class="canto__select pr__canto__select">Sekcia ${index+1}</h1>` 
+                pr__chapters.innerHTML += `<h1 class="chapters__select pr__canto__select">Sekcia ${index+1}</h1>` 
 
             })
         }
@@ -646,7 +647,9 @@ function resetAll() {
     bg__quotes.style.display = 'none'
     sb__canto.style.display = 'none'
     sb__chapters.style.display = 'none'
-    sb__quotes.style.display = 'none'   
+    sb__quotes.style.display = 'none' 
+    pr__chapters.style.display = 'none'
+    pr__quotes.style.display = 'none'  
 }
 
 
