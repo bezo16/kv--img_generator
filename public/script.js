@@ -626,9 +626,42 @@ if(!testing) {
             pr__chapters.style.display = 'flex'
             console.log(pr.length)
             pr.forEach((chapter,index) => {
-                pr__chapters.innerHTML += `<h1 class="chapters__select pr__canto__select">Sekcia ${index+1}</h1>` 
+                pr__chapters.innerHTML += `<h1 class="chapters__select pr__chapter__select">Sekcia ${index+1}</h1>` 
 
             })
+            let prSelector = document.querySelectorAll('.pr__chapter__select')
+            prSelector.forEach(chapter => {
+                chapter.addEventListener('click', (e) => {
+                    pr__quotes.innerHTML = ``
+                    let section = e.target.textContent.split(' ')[1] - 1
+                    pr__chapters.style.display = 'none'
+                    pr__quotes.style.display = 'flex'
+                    pr[section].forEach((quote,index) => {
+                        pr__quotes.innerHTML += `<div data-author=${quote.author} class="quote">${quote.quote} <span class="verse"> VERS.${index+1}</span></div>`
+                    })
+                    let allQuotes = document.querySelectorAll('.quote')
+                    allQuotes.forEach(quote => {
+                    quote.addEventListener('click',(e) => {
+                        console.log(e.target.dataset.author)
+                        allText = e.target.textContent
+                        chooseQuoteDiv.style.display = 'none'
+                        QuoteNum = allText.split('.')
+                        QuoteNum = QuoteNum[QuoteNum.length - 1]
+                        
+                        let allTextLength = allText.length
+                        console.log(allTextLength)
+                        
+                        selectStyles(allText.length)
+                        
+                        quoteText = e.target.dataset.author
+                        
+                        allText = allText.slice(0,allText.indexOf('VERS'))
+                        allText = allText.split(' ') 
+                        writeImage(0)
+                    })
+                })
+            })
+        })
         }
         ///////////////////////////// POREKADLA POREKADLA POREKADLA POREKADLA POREKADLA POREKADLA POREKADLA 
         // if(index < 100)pr__chapters.innerHTML += `<h1 class="chapters__select sb__canto__select">${chapter.quote}</h1>` 
