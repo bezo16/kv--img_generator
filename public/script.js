@@ -479,6 +479,7 @@ booksSelectors.forEach(book => {
         ////////////////////////// BG BG BG BG BG  BG BG BG BG BG  BG BG BG BG BG  BG BG BG BG BG 
         
         if(book === 'bg') {
+            resetAll()
             bg__chapters.style.display = 'flex'
             bg__quotes.style.display = 'none'
             bg__chapters.innerHTML = ``
@@ -511,8 +512,6 @@ booksSelectors.forEach(book => {
 
                             selectStyles(allText.length)
 
-
-
                             allText = allText.slice(0,allText.indexOf('VERS'))
                             allText = allText.split(' ') 
                             writeImage(0)
@@ -533,10 +532,43 @@ booksSelectors.forEach(book => {
         
         
         if(book === 'sb') {
-            bg__chapters.style.display = 'none'
-            bg__quotes.style.display = 'none'
-            sb__quotes.innerHTML = ``
-            console.log(sb.length)
+            resetAll()
+            sb__canto.innerHTML = ``
+            sb__canto.style.display = 'flex'
+            sb.forEach((chapter,index) => {
+                sb__canto.innerHTML += `<h1 class="canto__select sb__canto__select">Canto ${index+1}</h1>`
+            })
+            let sbSelectors = document.querySelectorAll('.sb__canto__select')
+            sbSelectors.forEach((canto,index) => {
+                canto.addEventListener('click',(e) => {
+                    sb__chapters.innerHTML = ``
+                    sb__canto.style.display = 'none'
+                    sb__chapters.style.display = 'flex'
+                    let cantoNum = e.target.textContent.split(' ')[1] -1
+                    bookChoose = 'Srimad-Bhagavatam'
+                    let chapters = sb[cantoNum]
+                    chapters.forEach((chapter,index) => {
+                        sb__chapters.innerHTML += `<h1 class="chapters__select sb__chapters__select">Chapter ${index+1}</h1>`
+                    })
+                    sbSelectors = document.querySelectorAll('.sb__chapters__select') 
+                    sbSelectors.forEach((chapter,index) => {
+                        chapter.addEventListener('click',(e) => {
+                            let chapterNum = e.target.textContent.split(' ')[1] - 1
+                            console.log(chapterNum)
+                            sb__chapters.style.display = 'none'
+                            sb__quotes.style.display = 'flex'
+                            sb__quotes.innerHTML = ''
+                            sb[cantoNum][chapterNum].forEach((quote,index) => {
+                                sb__quotes.innerHTML += `<div class="quote">${quote} <span class="verse"> VERS.${index+1}</span></div>`
+                            })
+                            
+                        })
+                    })
+                    console.log(chapters)
+                   
+                })
+            })
+            
         }
 
 
@@ -568,14 +600,12 @@ canvas1.addEventListener('click',(e) => {
     writeImage(0)
 })
 
-
-
-
-
-
-
-
-
+function resetAll() {
+    bg__chapters.style.display = 'none'
+    bg__quotes.style.display = 'none'
+    sb__chapters.style.display = 'none'
+    sb__quotes.style.display = 'none'   
+}
 
 
 }

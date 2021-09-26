@@ -371,11 +371,50 @@ input[type=file] {
     overflow: auto;
 }
 
-.chapter__select:hover {
-    cursor: pointer;
+.sb__canto {
+    display: none;
+    flex-wrap: wrap;
+}
+
+.sb__canto h1 {
+    width: 300px;
+    border-radius: 10px;
+    margin: 30px;
+    padding: 30px;
+    border: solid white 2px;
+}
+
+.sb__chapters {
+    display: none;
+    flex-wrap: wrap;
+}
+
+.sb__chapters h1 {
+    width: 300px;
+    border-radius: 10px;
+    margin: 30px;
+    padding: 30px;
+    border: solid white 2px;
+}
+
+.chapter__select {
     transition: 0.25s;
+    cursor: pointer;
+}
+
+.chapter__select:hover {
     color: gold;
-    background: rgba(255, 255, 255, 0.35);
+    background: rgb(31, 31, 31);
+}
+
+.canto__select {
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.canto__select:hover {
+    color: gold;
+    background: rgb(31, 31, 31);
 }
 
 .quote {
