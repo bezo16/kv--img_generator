@@ -371,6 +371,12 @@ input[type=file] {
     overflow: auto;
 }
 
+.sb__quotes {
+    display: none;
+    flex-direction: column;
+    overflow: auto;
+}
+
 .sb__canto {
     display: none;
     flex-wrap: wrap;
@@ -397,12 +403,12 @@ input[type=file] {
     border: solid white 2px;
 }
 
-.chapter__select {
+.chapters__select {
     transition: 0.25s;
     cursor: pointer;
 }
 
-.chapter__select:hover {
+.chapters__select:hover {
     color: gold;
     background: rgb(31, 31, 31);
 }

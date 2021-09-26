@@ -27,6 +27,7 @@ let QuoteNum
 let bookChoose 
 
 let allText = ''
+let quoteText = ``
 
 
 let images
@@ -233,7 +234,6 @@ function writeImage(mod) {
     // lineTextY +=  quoteAddY <= 35 ? 35 : quoteAddY
     ctx.shadowBlur = shadowBlur;
     ctx.lineWidth = lineWidth;
-    let quoteText = `${bookChoose} ${chapterNum +1}.${QuoteNum}`
     let quoteWidth = ctx.measureText(quoteText).width
     ctx.shadowBlur=7;
     ctx.lineWidth=3;
@@ -484,7 +484,7 @@ booksSelectors.forEach(book => {
             bg__quotes.style.display = 'none'
             bg__chapters.innerHTML = ``
             bg.forEach((chapter,index) => {
-                bg__chapters.innerHTML += `<h1 class="chapter__select bg__chapter__select">Chapter ${index+1}</h1>`
+                bg__chapters.innerHTML += `<h1 class="chapters__select bg__chapter__select">Chapter ${index+1}</h1>`
             })
             let bgSelectors = document.querySelectorAll('.bg__chapter__select')
             bgSelectors.forEach((chapter,index) => {
@@ -560,11 +560,30 @@ booksSelectors.forEach(book => {
                             sb__quotes.innerHTML = ''
                             sb[cantoNum][chapterNum].forEach((quote,index) => {
                                 sb__quotes.innerHTML += `<div class="quote">${quote} <span class="verse"> VERS.${index+1}</span></div>`
+                                let allQuotes = document.querySelectorAll('.quote')
+                                allQuotes.forEach(quote => {
+                                    quote.addEventListener('click',(e) => {
+                                        console.log()
+                                        chooseQuoteDiv.style.display = 'none'
+                                        allText = e.target.textContent
+                                        QuoteNum = allText.split('.')
+                                        QuoteNum = QuoteNum[QuoteNum.length - 1]
+                                        
+                                        let allTextLength = allText.length
+                                        console.log(allTextLength)
+                                        
+                                        selectStyles(allText.length)
+                                        
+                                        quoteText = `Srimad-Bhagavatam ${cantoNum +1}.${chapterNum +1}.${QuoteNum}`
+
+                                        allText = allText.slice(0,allText.indexOf('VERS'))
+                                        allText = allText.split(' ') 
+                                        writeImage(0)
+                                    })
                             })
-                            
                         })
                     })
-                    console.log(chapters)
+                })
                    
                 })
             })
@@ -587,8 +606,7 @@ booksSelectors.forEach(book => {
 
         ////////////////////////// SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB SB  
         if(book === 'cc') {
-            bg__chapters.style.display = 'none'
-            bg__quotes.style.display = 'none'
+            resetAll()
         }
     })
 })
@@ -603,6 +621,7 @@ canvas1.addEventListener('click',(e) => {
 function resetAll() {
     bg__chapters.style.display = 'none'
     bg__quotes.style.display = 'none'
+    sb__canto.style.display = 'none'
     sb__chapters.style.display = 'none'
     sb__quotes.style.display = 'none'   
 }
