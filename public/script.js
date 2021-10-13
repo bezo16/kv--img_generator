@@ -11,7 +11,17 @@ for(let i=0; i < tempPr.length + 100; i+=100) {
     console.log(pr)
 }
 
-let testing = 1
+
+
+let testing = 0
+
+
+
+
+
+
+
+
 
 
 select__images__skull.style.display = 'flex'
@@ -664,7 +674,6 @@ if(!testing) {
         })
         }
         ///////////////////////////// POREKADLA POREKADLA POREKADLA POREKADLA POREKADLA POREKADLA POREKADLA 
-        // if(index < 100)pr__chapters.innerHTML += `<h1 class="chapters__select sb__canto__select">${chapter.quote}</h1>` 
     })
 })
 
@@ -684,6 +693,26 @@ function resetAll() {
     pr__chapters.style.display = 'none'
     pr__quotes.style.display = 'none'  
 }
+
+
+customTextBtn.addEventListener('click',() => {
+    custom.style.display = 'flex'
+})
+
+custom__button.addEventListener('click',() => {
+    console.log(custom__textarea.value)
+    console.log(custom__input.value)
+
+    allText = custom__textarea.value
+    
+    selectStyles(allText.length)
+    
+    quoteText = custom__input.value
+    allText = allText.split(' ') 
+    writeImage(0)
+    custom__input.value = ''
+    custom.style.display = 'none'
+})
 
 
 }

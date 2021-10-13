@@ -305,6 +305,22 @@ input[type=file] {
     margin-top: 20px;
 }
 
+#customTextBtn {
+    width: min-content;
+    font-size: 2rem;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+#customTextBtn:hover {
+    transition: 0s;
+    background: rgba(0, 0, 0, 0.61);
+    padding: 10px;
+    color: rgb(255, 255, 2);
+}
+
 #chooseQuoteBtn:hover {
     transition: 0s;
     background: rgba(0, 0, 0, 0.61);
@@ -414,4 +430,18 @@ input[type=file] {
 
 .verse {
     color: yellow;
+}
+
+#custom {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: green;
+    width: 45vw;
+    height: 60vh;
+    display: none;
+    z-index: 2302930123;
+    flex-direction: column;
+
 }
