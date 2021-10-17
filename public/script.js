@@ -8,7 +8,6 @@ window.onload = function() {
 // canvas1 displayBtn resImage
 for(let i=0; i < tempPr.length + 100; i+=100) {
     pr.push(tempPr.slice(i,i + 100))
-    console.log(pr)
 }
 
 
@@ -169,14 +168,13 @@ function imagesClickEvent() {
     images.forEach(img => {
         img.addEventListener('click',(e) => {
             resImage.src = e.target.src
-            writeImage(selectedQuote.quote,11) 
+            writeImage(0) 
         })
     })
 }
 
 function writeImage(mod) {
     let font = ctx.font
-    console.log(font)
     if(mod === 1)  ctx.filter = "brightness(90%)"
     if(mod === 2)  ctx.filter = "brightness(110%)"
     ctx.drawImage(resImage,0,0)
@@ -262,16 +260,6 @@ function writeImage(mod) {
     ctx.fillText(quoteText,((350) - quoteWidth/2),quoteY)
 
 
-    // ctx.font = '22' + font.slice(2)
-    // ctx.shadowBlur = shadowBlur;
-    // ctx.lineWidth = lineWidth;
-    // let measureLength = ctx.measureText(selectedQuote.author)
-    //  ctx.strokeText(selectedQuote.author, 300 - measureLength.width / 2 ,570)  
-    // ctx.filter = textBrightness 
-    // ctx.shadowBlur=0;
-    // ctx.fillStyle="white";
-    // ctx.fillText(selectedQuote.author,300 - measureLength.width / 2 ,580)
-
     selectFont("26px Gabriola");
     let reinText = `@reinkarnacia.sk`
     let textWidthRein = ctx.measureText(reinText)
@@ -311,7 +299,6 @@ downbtn.addEventListener('click',() => {
 })
 
 upbtn.addEventListener('click',() => {
-    console.log('up ' + ctx.font)
     textY -= 10
     writeImage(0)
    
@@ -495,7 +482,6 @@ if(!testing) {
                    booksSelectors.forEach(book => {
                        book.addEventListener('click',(e) => {
                            let book = e.target.dataset.book
-                      console.log(book)
                                                     
                                                     
                                                     ////////////////////////// BG BG BG BG BG  BG BG BG BG BG  BG BG BG BG BG  BG BG BG BG BG 
@@ -511,7 +497,6 @@ if(!testing) {
             let bgSelectors = document.querySelectorAll('.bg__chapter__select')
             bgSelectors.forEach((chapter,index) => {
                 chapter.addEventListener('click',(e) => {
-                    console.log('choosin chapter')
                     bg__quotes.innerHTML = ``
                     bg__chapters.style.display = 'none'
                     bg__quotes.style.display = 'flex'
@@ -528,9 +513,6 @@ if(!testing) {
                             allText = e.target.textContent
                             QuoteNum = allText.split('.')
                             QuoteNum = QuoteNum[QuoteNum.length - 1]
-
-                            let allTextLength = allText.length
-                            console.log(allTextLength)
 
                             quoteText = `Bhagavad-gītā ${chapterNum +1 }.${QuoteNum}`
 
@@ -578,7 +560,6 @@ if(!testing) {
                     sbSelectors.forEach((chapter,index) => {
                         chapter.addEventListener('click',(e) => {
                             let chapterNum = e.target.textContent.split(' ')[1] - 1
-                            console.log(chapterNum)
                             sb__chapters.style.display = 'none'
                             sb__quotes.style.display = 'flex'
                             sb__quotes.innerHTML = ''
@@ -587,14 +568,12 @@ if(!testing) {
                                 let allQuotes = document.querySelectorAll('.quote')
                                 allQuotes.forEach(quote => {
                                     quote.addEventListener('click',(e) => {
-                                        console.log()
                                         chooseQuoteDiv.style.display = 'none'
                                         allText = e.target.textContent
                                         QuoteNum = allText.split('.')
                                         QuoteNum = QuoteNum[QuoteNum.length - 1]
                                         
                                         let allTextLength = allText.length
-                                        console.log(allTextLength)
                                         
                                         selectStyles(allText.length)
                                         
@@ -634,7 +613,6 @@ if(!testing) {
             resetAll()
             pr__chapters.innerHTML = ``
             pr__chapters.style.display = 'flex'
-            console.log(pr.length)
             pr.forEach((chapter,index) => {
                 pr__chapters.innerHTML += `<h1 class="chapters__select pr__chapter__select">Sekcia ${index+1}</h1>` 
 
@@ -652,14 +630,12 @@ if(!testing) {
                     let allQuotes = document.querySelectorAll('.quote')
                     allQuotes.forEach(quote => {
                     quote.addEventListener('click',(e) => {
-                        console.log(e.target.dataset.author)
                         allText = e.target.textContent
                         chooseQuoteDiv.style.display = 'none'
                         QuoteNum = allText.split('.')
                         QuoteNum = QuoteNum[QuoteNum.length - 1]
                         
                         let allTextLength = allText.length
-                        console.log(allTextLength)
                         
                         selectStyles(allText.length)
                         
@@ -680,7 +656,6 @@ if(!testing) {
 
 canvas1.addEventListener('click',(e) => {
     quoteY = e.clientY - 138
-    console.log(quoteY)
     writeImage(0)
 })
 
@@ -700,15 +675,11 @@ customTextBtn.addEventListener('click',() => {
 })
 
 custom__button.addEventListener('click',() => {
-    console.log(custom__textarea.value)
-    console.log(custom__input.value)
 
     allText = custom__textarea.value
-    
     selectStyles(allText.length)
-    
-    quoteText = custom__input.value
     allText = allText.split(' ') 
+    quoteText = custom__input.value
     writeImage(0)
     custom__input.value = ''
     custom.style.display = 'none'

@@ -417,6 +417,10 @@ input[type=file] {
     background: rgb(31, 31, 31);
 }
 
+.canto {
+    flex-wrap: wrap;
+}
+
 .quote {
     cursor: pointer;
     padding: 3px;
