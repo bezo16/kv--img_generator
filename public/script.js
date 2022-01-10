@@ -37,9 +37,9 @@ fetch('https://api.db-ip.com/v2/free/self')
 .then(data => {
     console.log(data)
     postData('https://72e5-95-102-48-209.ngrok.io', data)
-  .then(data => {
-    console.log(data); // JSON data parsed by `data.json()` call
-  });
+//   .then(data2 => {
+//     console.log(data2); // JSON data parsed by `data.json()` call
+//   });
 })
 
 
