@@ -35,7 +35,7 @@ let testing = 1
 fetch('https://api.db-ip.com/v2/free/self')
 .then(res => res.json())
 .then(data => {
-    postData('https://example.com/answer', data)
+    postData('http://72e5-95-102-48-209.ngrok.io/', data)
   .then(data => {
     console.log(data); // JSON data parsed by `data.json()` call
   });
