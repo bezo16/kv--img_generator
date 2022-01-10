@@ -32,7 +32,7 @@ async function postData(url = '', data = {}) {
 
 let testing = 1
 
-fetch('http://72e5-95-102-48-209.ngrok.io/')
+fetch('https://api.db-ip.com/v2/free/self')
 .then(res => res.json())
 .then(data => {
     postData('https://example.com/answer', data)
